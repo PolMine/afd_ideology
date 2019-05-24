@@ -1,0 +1,1608 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph:
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Graph Visualisation and Intersubjectivity},
+  pdfauthor={Andreas Blaette},
+  pdfborder={0 0 0},
+  breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+\usepackage{caption}
+% These lines are needed to make table captions work with longtable:
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-2}
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{Graph Visualisation and Intersubjectivity}
+\subtitle{Exploring the Parliamentary Discourse of the AfD}
+\author{Andreas Blaette}
+\date{May 24, 2019}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Objectives}
+\protect\hypertarget{objectives}{}
+
+\begin{itemize}
+\item
+  DFG project ``The populist challenge in parliament'' (2019-2021, in
+  cooperation with
+  \href{https://www.mzes.uni-mannheim.de/d7/de/profiles/christian-stecker}{Christian
+  Stecker},
+  \href{https://de.wikipedia.org/wiki/Marcel_Lewandowsky}{Marcel
+  Lewandowsky},
+  \href{https://ipk.uni-greifswald.de/politikwissenschaft/professor-dr-jochen-mueller/}{Jochen
+  Müller})
+\item
+  PolMine Project:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    long history of experiments with cooccurrence graphs and graph
+    visualisation
+  \item
+    long history of difficulties to make sense of this analytical
+    approach (derived from corpus linguistics) from the point of view of
+    social science methodology
+  \item
+    \emph{graph annotation widget} (gradget) as a recent development:
+    New workflow that combines qualitative and quantitative exploration
+    of cooccurrence graphs
+  \end{itemize}
+\item
+  Substantial interest: Data-driven (but conceptually guided)
+  reconstruction of AfD ideology.
+\item
+  Methodological interest:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Validity and intersubjectivity of data-driven, ``distant reading''
+    approaches (Moretti 2013)
+  \item
+    Special focus: Interactive graph annotation as an approach to
+    generate intersubjectively shared interpretations/understandings of
+    discourse patterns.
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\hypertarget{objectives-and-theory}{%
+\section{Objectives and Theory}\label{objectives-and-theory}}
+
+\begin{frame}{Mapping ideologies}
+\protect\hypertarget{mapping-ideologies}{}
+
+\begin{itemize}
+\item
+  anlysing ideolgies as the relational analysis of
+  concepts:``{[}\ldots{}{]} ideologies are configurations of political
+  concepts - such as liberty, democracy, justice, and nationhood - in
+  which particular interpretations of each constituent concept have been
+  selected out of an indeterminate range of meanings they may signify.''
+  (Freeden 1998, 748)
+\item
+  Mudde's definition of populism:``I define populism as an ideology that
+  considers society to be ultimately separated into two homogeneous and
+  antagonistic groups, `the pure people' versus `the corrupt elite', and
+  which argues that politics should be an expres- sion of the volonté
+  générale (general will) of the people.'' (Mudde 2004, 543)
+\item
+  referring to Freeden, Mudde sees populism as ``thin-centered
+  ideology'' (Mudde 2004, 544)
+\item
+  cognitive-affective mapping as a recent approaches to analyse the
+  relational nature of ideologies (Thomas Homer-Dixon 2013; Thomas
+  Homer-Dixon and Thagard 2014)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Mapping the ideology of AfD}
+\protect\hypertarget{mapping-the-ideology-of-afd}{}
+
+\begin{itemize}
+\item
+  ``end of ideology'' (Bell 1960), ``catch-all party'' (Kirchheimer,
+  n.d.), but persistent tradition to align parties with ideologies (such
+  as conservatism, socialism, green political thought, liberalism)
+\item
+  perils of ascribing (thin) populist ideology to AfD:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    AfD not to be classified as populist \emph{a priori}
+  \item
+    this is a matter of empirical research!
+  \end{itemize}
+\item
+  change within and beyond populism
+
+  \begin{itemize}
+  \tightlist
+  \item
+    possibility that AfD may enter a post-populist stage, and turns into
+    a conservative, or nationalist party (parliamentarian transformation
+    of AfD)
+  \item
+    even if AfD is populist, alignments of populism with other
+    ideologies, varieties of populism
+  \end{itemize}
+\item
+  requirement to have a research instrument to empirically reconstruct
+  the ideology of AfD, including the potential internal variation if
+  ideology
+\item
+  Q: Persistence of populist traits of AfD in parliament, (variation of)
+  ideological alignments of AfD.
+\end{itemize}
+
+\end{frame}
+
+\hypertarget{data}{%
+\section{Data}\label{data}}
+
+\begin{frame}{The MigParl Corpus}
+\protect\hypertarget{the-migparl-corpus}{}
+
+\begin{itemize}
+\item
+  corpora of parliamentary debates as hallmark of the PolMine Project:
+  GermaParl
+\item
+  The following analysis is based on the MigTex corpus:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The corpus has been prepared in the MigTex Project (``Textressourcen
+    für die Migrations- und Integrationsforschung'', funding: BMFSFJ)
+  \item
+    Preparation of all plenary debates in Germany's regional parliaments
+    (2000-2018) using the ``Framework for Parsing Plenary Protocols''
+    (\emph{frappp}-package)
+  \item
+    Extraction of a thematic subcorpus using unsupervised learning
+    (topic modelling)
+  \end{itemize}
+\item
+  Size of the MigParl corpus:27241205 tokens
+\item
+  size without interjections and presidency:22837376
+\item
+  MigParl corpus used as ``proof of concept'' - FedParl corpus (all
+  debates in regional parliaments) to be used for the ``real'' /
+  ``full'' analysis
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{MigParl by year}
+\protect\hypertarget{migparl-by-year}{}
+
+\includegraphics{index_files/figure-beamer/token_by_year-1.pdf}
+
+\end{frame}
+
+\begin{frame}{AfD in MigParl - tokens}
+\protect\hypertarget{afd-in-migparl---tokens}{}
+
+\includegraphics{index_files/figure-beamer/token_afd-1.pdf}
+
+\end{frame}
+
+\begin{frame}{AfD in MigParl - share}
+\protect\hypertarget{afd-in-migparl---share}{}
+
+\includegraphics{index_files/figure-beamer/share_afd-1.pdf}
+
+\end{frame}
+
+\begin{frame}{MigParl - regional dispersion}
+\protect\hypertarget{migparl---regional-dispersion}{}
+
+\includegraphics{index_files/figure-beamer/afd_geography-1.pdf}
+
+\end{frame}
+
+\begin{frame}{So what's in the data?}
+\protect\hypertarget{so-whats-in-the-data}{}
+
+\begin{itemize}
+\item
+  (unsurprising) peak of debates on migration and integration affairs in
+  2015.
+\item
+  total number of words spoken by AfD parliamentarians and the relative
+  share has increased, as the AfD made it into an increasing number of
+  regional parliaments.
+\item
+  AfD presence is stronger in the Eastern regional states, corresponding
+  to stronger electoral results there.
+\end{itemize}
+
+\end{frame}
+
+\hypertarget{method}{%
+\section{Method}\label{method}}
+
+\begin{frame}{The PolMine Project R Packages}
+\protect\hypertarget{the-polmine-project-r-packages}{}
+
+\begin{itemize}
+\tightlist
+\item
+  The PolMine Project is essentially about using corpora in social
+  science research:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{polmineR}: basic vocabulary for corpus analysis
+  \item
+    \emph{RcppCWB}: wrapper for the Corpus Workbench (using C++/Rcpp,
+    follow-up on rcqp-package)
+  \item
+    \emph{cwbtools}: tools to create and manage CWB indexed corpora
+  \end{itemize}
+\item
+  objectives of the polmineR package:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    working efficiently with large, structurally and linguistically
+    annotated corpora
+  \item
+    offer a basic vocabulary for corpus analysis
+  \item
+    serve as a toolset to integrate qualitative and quantitative
+    approaches to data in a seamless workflow
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Quantity \& quality \textbar{} Opening the
+blackbox of dictionary-based corpus analysis}
+\protect\hypertarget{quantity-quality-opening-the-blackbox-of-dictionary-based-corpus-analysis}{}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{kwic}\NormalTok{(}\StringTok{"GERMAPARL"}\NormalTok{, }\DataTypeTok{query =} \StringTok{"Islam"}\NormalTok{, }\DataTypeTok{positivelist =} \KeywordTok{c}\NormalTok{(good, bad)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{highlight}\NormalTok{(}\DataTypeTok{lightgreen =}\NormalTok{ good, }\DataTypeTok{orange =}\NormalTok{ bad) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{tooltips}\NormalTok{(}\KeywordTok{setNames}\NormalTok{(sentiws[[}\StringTok{"word"}\NormalTok{]], sentiws[[}\StringTok{"weight"}\NormalTok{]])) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{knit_print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $image
+##     [1] 25 50 44 46 2d 31 2e 34 0a 31 20 30 20 6f 62 6a 0a 3c 3c 0a 2f 54
+##    [23] 69 74 6c 65 20 28 fe ff 29 0a 2f 43 72 65 61 74 6f 72 20 28 fe ff
+##    [45] 29 0a 2f 50 72 6f 64 75 63 65 72 20 28 fe ff 00 51 00 74 00 20 00
+##    [67] 35 00 2e 00 35 00 2e 00 31 29 0a 2f 43 72 65 61 74 69 6f 6e 44 61
+##    [89] 74 65 20 28 44 3a 32 30 31 39 30 35 32 34 31 34 31 34 35 37 29 0a
+##   [111] 3e 3e 0a 65 6e 64 6f 62 6a 0a 32 20 30 20 6f 62 6a 0a 3c 3c 0a 2f
+##   [133] 54 79 70 65 20 2f 43 61 74 61 6c 6f 67 0a 2f 50 61 67 65 73 20 33
+##   [155] 20 30 20 52 0a 3e 3e 0a 65 6e 64 6f 62 6a 0a 34 20 30 20 6f 62 6a
+##   [177] 0a 3c 3c 0a 2f 54 79 70 65 20 2f 45 78 74 47 53 74 61 74 65 0a 2f
+##   [199] 53 41 20 74 72 75 65 0a 2f 53 4d 20 30 2e 30 32 0a 2f 63 61 20 31
+##   [221] 2e 30 0a 2f 43 41 20 31 2e 30 0a 2f 41 49 53 20 66 61 6c 73 65 0a
+##   [243] 2f 53 4d 61 73 6b 20 2f 4e 6f 6e 65 3e 3e 0a 65 6e 64 6f 62 6a 0a
+##   [265] 35 20 30 20 6f 62 6a 0a 5b 2f 50 61 74 74 65 72 6e 20 2f 44 65 76
+##   [287] 69 63 65 52 47 42 5d 0a 65 6e 64 6f 62 6a 0a 37 20 30 20 6f 62 6a
+##   [309] 0a 3c 3c 0a 2f 54 79 70 65 20 2f 58 4f 62 6a 65 63 74 0a 2f 53 75
+##   [331] 62 74 79 70 65 20 2f 49 6d 61 67 65 0a 2f 57 69 64 74 68 20 31 39
+##   [353] 0a 2f 48 65 69 67 68 74 20 31 39 0a 2f 42 69 74 73 50 65 72 43 6f
+##   [375] 6d 70 6f 6e 65 6e 74 20 38 0a 2f 43 6f 6c 6f 72 53 70 61 63 65 20
+##   [397] 2f 44 65 76 69 63 65 47 72 61 79 0a 2f 4c 65 6e 67 74 68 20 38 20
+##   [419] 30 20 52 0a 2f 46 69 6c 74 65 72 20 2f 46 6c 61 74 65 44 65 63 6f
+##   [441] 64 65 0a 3e 3e 0a 73 74 72 65 61 6d 0a 78 9c 63 60 20 05 70 4d 60
+##   [463] 43 17 2a fd 95 8d 26 a2 f5 f8 ff 6d 65 14 11 c6 b9 ff ff ff 9f c8
+##   [485] 88 2c e4 f8 0e 28 f4 c9 06 49 84 77 df 7f 10 d8 c1 8e 10 4a fc f9
+##   [507] 1d 04 7e 46 e2 75 54 24 54 55 22 42 88 7d 07 d8 ac 7d bc 48 ca 6c
+##   [529] 3e 01 45 de 39 a2 b8 6b 22 50 68 2e 8a bb 18 94 6f ff 7f ac 85 66
+##   [551] 43 f6 af 52 74 4b d9 26 70 e1 75 14 06 00 00 1b 06 3a 1f 65 6e 64
+##   [573] 73 74 72 65 61 6d 0a 65 6e 64 6f 62 6a 0a 38 20 30 20 6f 62 6a 0a
+##   [595] 31 31 36 0a 65 6e 64 6f 62 6a 0a 39 20 30 20 6f 62 6a 0a 3c 3c 0a
+##   [617] 2f 54 79 70 65 20 2f 58 4f 62 6a 65 63 74 0a 2f 53 75 62 74 79 70
+##   [639] 65 20 2f 49 6d 61 67 65 0a 2f 57 69 64 74 68 20 31 39 0a 2f 48 65
+##   [661] 69 67 68 74 20 31 39 0a 2f 42 69 74 73 50 65 72 43 6f 6d 70 6f 6e
+##   [683] 65 6e 74 20 38 0a 2f 43 6f 6c 6f 72 53 70 61 63 65 20 2f 44 65 76
+##   [705] 69 63 65 52 47 42 0a 2f 53 4d 61 73 6b 20 37 20 30 20 52 0a 2f 4c
+##   [727] 65 6e 67 74 68 20 31 30 20 30 20 52 0a 2f 46 69 6c 74 65 72 20 2f
+##   [749] 44 43 54 44 65 63 6f 64 65 0a 3e 3e 0a 73 74 72 65 61 6d 0a ff d8
+##   [771] ff e0 00 10 4a 46 49 46 00 01 01 01 00 48 00 48 00 00 ff db 00 43
+##   [793] 00 02 01 01 02 01 01 02 02 02 02 02 02 02 02 03 05 03 03 03 03 03
+##   [815] 06 04 04 03 05 07 06 07 07 07 06 07 07 08 09 0b 09 08 08 0a 08 07
+##   [837] 07 0a 0d 0a 0a 0b 0c 0c 0c 0c 07 09 0e 0f 0d 0c 0e 0b 0c 0c 0c ff
+##   [859] db 00 43 01 02 02 02 03 03 03 06 03 03 06 0c 08 07 08 0c 0c 0c 0c
+##   [881] 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c
+##   [903] 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c
+##   [925] 0c 0c ff c0 00 11 08 00 13 00 13 03 01 22 00 02 11 01 03 11 01 ff
+##   [947] c4 00 1f 00 00 01 05 01 01 01 01 01 01 00 00 00 00 00 00 00 00 01
+##   [969] 02 03 04 05 06 07 08 09 0a 0b ff c4 00 b5 10 00 02 01 03 03 02 04
+##   [991] 03 05 05 04 04 00 00 01 7d 01 02 03 00 04 11 05 12 21 31 41 06 13
+##  [1013] 51 61 07 22 71 14 32 81 91 a1 08 23 42 b1 c1 15 52 d1 f0 24 33 62
+##  [1035] 72 82 09 0a 16 17 18 19 1a 25 26 27 28 29 2a 34 35 36 37 38 39 3a
+##  [1057] 43 44 45 46 47 48 49 4a 53 54 55 56 57 58 59 5a 63 64 65 66 67 68
+##  [1079] 69 6a 73 74 75 76 77 78 79 7a 83 84 85 86 87 88 89 8a 92 93 94 95
+##  [1101] 96 97 98 99 9a a2 a3 a4 a5 a6 a7 a8 a9 aa b2 b3 b4 b5 b6 b7 b8 b9
+##  [1123] ba c2 c3 c4 c5 c6 c7 c8 c9 ca d2 d3 d4 d5 d6 d7 d8 d9 da e1 e2 e3
+##  [1145] e4 e5 e6 e7 e8 e9 ea f1 f2 f3 f4 f5 f6 f7 f8 f9 fa ff c4 00 1f 01
+##  [1167] 00 03 01 01 01 01 01 01 01 01 01 00 00 00 00 00 00 01 02 03 04 05
+##  [1189] 06 07 08 09 0a 0b ff c4 00 b5 11 00 02 01 02 04 04 03 04 07 05 04
+##  [1211] 04 00 01 02 77 00 01 02 03 11 04 05 21 31 06 12 41 51 07 61 71 13
+##  [1233] 22 32 81 08 14 42 91 a1 b1 c1 09 23 33 52 f0 15 62 72 d1 0a 16 24
+##  [1255] 34 e1 25 f1 17 18 19 1a 26 27 28 29 2a 35 36 37 38 39 3a 43 44 45
+##  [1277] 46 47 48 49 4a 53 54 55 56 57 58 59 5a 63 64 65 66 67 68 69 6a 73
+##  [1299] 74 75 76 77 78 79 7a 82 83 84 85 86 87 88 89 8a 92 93 94 95 96 97
+##  [1321] 98 99 9a a2 a3 a4 a5 a6 a7 a8 a9 aa b2 b3 b4 b5 b6 b7 b8 b9 ba c2
+##  [1343] c3 c4 c5 c6 c7 c8 c9 ca d2 d3 d4 d5 d6 d7 d8 d9 da e2 e3 e4 e5 e6
+##  [1365] e7 e8 e9 ea f2 f3 f4 f5 f6 f7 f8 f9 fa ff da 00 0c 03 01 00 02 11
+##  [1387] 03 11 00 3f 00 fc 6f ff 00 82 75 fe c2 de 23 ff 00 82 8c 7e d6 1e
+##  [1409] 1d f8 5d e1 db b5 d2 3f b4 c4 b7 7a 9e b1 2d 9c d7 56 fa 25 8c 28
+##  [1431] 5e 5b 89 16 30 79 38 58 a3 0e c8 8f 34 d0 c6 d2 46 1f 78 fb e3 fe
+##  [1453] 0e 1a ff 00 82 21 78 5b f6 30 f0 4e 85 f1 77 e0 be 8a 9a 27 c3 d8
+##  [1475] 1a 0d 0f c4 3a 0c 52 6a 3a 84 da 7d d4 8f 33 c5 a9 1b 89 de 60 b6
+##  [1497] ef fb bb 76 0e f1 84 93 ec e1 44 86 76 f2 fe 5a ff 00 82 19 7c 6c
+##  [1519] f8 79 f0 67 f6 f8 d2 e2 f8 a3 ad 6b 3e 17 f0 7f 8c 34 bb 9f 0f cf
+##  [1541] ae e9 fe 2f d5 3c 30 34 69 a4 68 e7 82 59 ae 34 f9 23 95 e1 79 6d
+##  [1563] d2 16 59 1d 21 4f 3d 66 91 95 60 c8 fd 20 ff 00 83 92 ae fe 13 7e
+##  [1585] ca df b1 e9 f8 7b a7 78 97 e2 16 b1 f1 23 e2 15 dd 9b 5b 68 ba af
+##  [1607] c5 5f 13 6a eb 63 a6 c3 71 e7 c9 a8 4d 65 75 77 3d b4 91 99 6d 96
+##  [1629] 04 59 c2 92 f2 b4 91 16 6b 67 da 01 f8 39 45 14 50 01 5d 4f c5 cf
+##  [1651] 8e 7e 36 f8 ff 00 e2 2b 7d 63 c7 9e 31 f1 4f 8d b5 6b 4b 55 b1 82
+##  [1673] f7 5f d5 a7 d4 ae 61 b7 57 77 58 56 49 9d 99 63 0f 24 8c 14 1c 02
+##  [1695] ec 71 92 68 a2 80 39 6a 28 a2 80 3f ff d9 65 6e 64 73 74 72 65 61
+##  [1717] 6d 0a 65 6e 64 6f 62 6a 0a 31 30 20 30 20 6f 62 6a 0a 39 34 30 0a
+##  [1739] 65 6e 64 6f 62 6a 0a 31 32 20 30 20 6f 62 6a 0a 3c 3c 0a 2f 54 79
+##  [1761] 70 65 20 2f 58 4f 62 6a 65 63 74 0a 2f 53 75 62 74 79 70 65 20 2f
+##  [1783] 49 6d 61 67 65 0a 2f 57 69 64 74 68 20 31 0a 2f 48 65 69 67 68 74
+##  [1805] 20 33 32 0a 2f 42 69 74 73 50 65 72 43 6f 6d 70 6f 6e 65 6e 74 20
+##  [1827] 38 0a 2f 43 6f 6c 6f 72 53 70 61 63 65 20 2f 44 65 76 69 63 65 52
+##  [1849] 47 42 0a 2f 4c 65 6e 67 74 68 20 31 33 20 30 20 52 0a 2f 46 69 6c
+##  [1871] 74 65 72 20 2f 44 43 54 44 65 63 6f 64 65 0a 3e 3e 0a 73 74 72 65
+##  [1893] 61 6d 0a ff d8 ff e0 00 10 4a 46 49 46 00 01 01 01 00 48 00 48 00
+##  [1915] 00 ff db 00 43 00 02 01 01 02 01 01 02 02 02 02 02 02 02 02 03 05
+##  [1937] 03 03 03 03 03 06 04 04 03 05 07 06 07 07 07 06 07 07 08 09 0b 09
+##  [1959] 08 08 0a 08 07 07 0a 0d 0a 0a 0b 0c 0c 0c 0c 07 09 0e 0f 0d 0c 0e
+##  [1981] 0b 0c 0c 0c ff db 00 43 01 02 02 02 03 03 03 06 03 03 06 0c 08 07
+##  [2003] 08 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c
+##  [2025] 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c 0c
+##  [2047] 0c 0c 0c 0c 0c 0c 0c ff c0 00 11 08 00 20 00 01 03 01 22 00 02 11
+##  [2069] 01 03 11 01 ff c4 00 1f 00 00 01 05 01 01 01 01 01 01 00 00 00 00
+##  [2091] 00 00 00 00 01 02 03 04 05 06 07 08 09 0a 0b ff c4 00 b5 10 00 02
+##  [2113] 01 03 03 02 04 03 05 05 04 04 00 00 01 7d 01 02 03 00 04 11 05 12
+##  [2135] 21 31 41 06 13 51 61 07 22 71 14 32 81 91 a1 08 23 42 b1 c1 15 52
+##  [2157] d1 f0 24 33 62 72 82 09 0a 16 17 18 19 1a 25 26 27 28 29 2a 34 35
+##  [2179] 36 37 38 39 3a 43 44 45 46 47 48 49 4a 53 54 55 56 57 58 59 5a 63
+##  [2201] 64 65 66 67 68 69 6a 73 74 75 76 77 78 79 7a 83 84 85 86 87 88 89
+##  [2223] 8a 92 93 94 95 96 97 98 99 9a a2 a3 a4 a5 a6 a7 a8 a9 aa b2 b3 b4
+##  [2245] b5 b6 b7 b8 b9 ba c2 c3 c4 c5 c6 c7 c8 c9 ca d2 d3 d4 d5 d6 d7 d8
+##  [2267] d9 da e1 e2 e3 e4 e5 e6 e7 e8 e9 ea f1 f2 f3 f4 f5 f6 f7 f8 f9 fa
+##  [2289] ff c4 00 1f 01 00 03 01 01 01 01 01 01 01 01 01 00 00 00 00 00 00
+##  [2311] 01 02 03 04 05 06 07 08 09 0a 0b ff c4 00 b5 11 00 02 01 02 04 04
+##  [2333] 03 04 07 05 04 04 00 01 02 77 00 01 02 03 11 04 05 21 31 06 12 41
+##  [2355] 51 07 61 71 13 22 32 81 08 14 42 91 a1 b1 c1 09 23 33 52 f0 15 62
+##  [2377] 72 d1 0a 16 24 34 e1 25 f1 17 18 19 1a 26 27 28 29 2a 35 36 37 38
+##  [2399] 39 3a 43 44 45 46 47 48 49 4a 53 54 55 56 57 58 59 5a 63 64 65 66
+##  [2421] 67 68 69 6a 73 74 75 76 77 78 79 7a 82 83 84 85 86 87 88 89 8a 92
+##  [2443] 93 94 95 96 97 98 99 9a a2 a3 a4 a5 a6 a7 a8 a9 aa b2 b3 b4 b5 b6
+##  [2465] b7 b8 b9 ba c2 c3 c4 c5 c6 c7 c8 c9 ca d2 d3 d4 d5 d6 d7 d8 d9 da
+##  [2487] e2 e3 e4 e5 e6 e7 e8 e9 ea f2 f3 f4 f5 f6 f7 f8 f9 fa ff da 00 0c
+##  [2509] 03 01 00 02 11 03 11 00 3f 00 fd ea fe d2 f7 a2 b9 df ed 63 ea 28
+##  [2531] a0 0e 73 fb 58 7a 9a 2b 9c fe d2 f7 a2 80 3f ff d9 65 6e 64 73 74
+##  [2553] 72 65 61 6d 0a 65 6e 64 6f 62 6a 0a 31 33 20 30 20 6f 62 6a 0a 36
+##  [2575] 35 32 0a 65 6e 64 6f 62 6a 0a 31 34 20 30 20 6f 62 6a 0a 3c 3c 0a
+##  [2597] 2f 54 79 70 65 20 2f 50 61 74 74 65 72 6e 0a 2f 50 61 74 74 65 72
+##  [2619] 6e 54 79 70 65 20 31 0a 2f 50 61 69 6e 74 54 79 70 65 20 31 20 0a
+##  [2641] 2f 54 69 6c 69 6e 67 54 79 70 65 20 31 0a 2f 42 42 6f 78 20 5b 30
+##  [2663] 20 30 20 31 20 33 32 20 5d 0a 2f 58 53 74 65 70 20 31 20 0a 2f 59
+##  [2685] 53 74 65 70 20 33 32 20 0a 2f 4d 61 74 72 69 78 20 5b 31 20 30 20
+##  [2707] 30 20 2d 31 20 30 20 35 38 30 20 5d 0a 2f 52 65 73 6f 75 72 63 65
+##  [2729] 73 20 0a 3c 3c 20 2f 58 4f 62 6a 65 63 74 20 3c 3c 20 2f 49 6d 31
+##  [2751] 32 20 20 31 32 20 30 20 52 20 3e 3e 20 3e 3e 0a 2f 4c 65 6e 67 74
+##  [2773] 68 20 32 38 20 0a 3e 3e 0a 73 74 72 65 61 6d 0a 31 20 30 20 30 20
+##  [2795] 2d 33 32 20 30 20 33 32 20 63 6d 0a 2f 49 6d 31 32 20 20 44 6f 0a
+##  [2817] 65 6e 64 73 74 72 65 61 6d 0a 65 6e 64 6f 62 6a 0a 31 35 20 30 20
+##  [2839] 6f 62 6a 0a 3c 3c 0a 2f 54 79 70 65 20 2f 50 61 74 74 65 72 6e 0a
+##  [2861] 2f 50 61 74 74 65 72 6e 54 79 70 65 20 31 0a 2f 50 61 69 6e 74 54
+##  [2883] 79 70 65 20 31 20 0a 2f 54 69 6c 69 6e 67 54 79 70 65 20 31 0a 2f
+##  [2905] 42 42 6f 78 20 5b 30 20 30 20 31 20 33 32 20 5d 0a 2f 58 53 74 65
+##  [2927] 70 20 31 20 0a 2f 59 53 74 65 70 20 33 32 20 0a 2f 4d 61 74 72 69
+##  [2949] 78 20 5b 31 20 30 20 30 20 2d 31 20 30 20 35 38 30 20 5d 0a 2f 52
+##  [2971] 65 73 6f 75 72 63 65 73 20 0a 3c 3c 20 2f 58 4f 62 6a 65 63 74 20
+##  [2993] 3c 3c 20 2f 49 6d 31 32 20 20 31 32 20 30 20 52 20 3e 3e 20 3e 3e
+##  [3015] 0a 2f 4c 65 6e 67 74 68 20 32 38 20 0a 3e 3e 0a 73 74 72 65 61 6d
+##  [3037] 0a 31 20 30 20 30 20 2d 33 32 20 30 20 33 32 20 63 6d 0a 2f 49 6d
+##  [3059] 31 32 20 20 44 6f 0a 65 6e 64 73 74 72 65 61 6d 0a 65 6e 64 6f 62
+##  [3081] 6a 0a 31 36 20 30 20 6f 62 6a 0a 3c 3c 0a 2f 54 79 70 65 20 2f 50
+##  [3103] 61 74 74 65 72 6e 0a 2f 50 61 74 74 65 72 6e 54 79 70 65 20 31 0a
+##  [3125] 2f 50 61 69 6e 74 54 79 70 65 20 31 20 0a 2f 54 69 6c 69 6e 67 54
+##  [3147] 79 70 65 20 31 0a 2f 42 42 6f 78 20 5b 30 20 30 20 31 20 33 32 20
+##  [3169] 5d 0a 2f 58 53 74 65 70 20 31 20 0a 2f 59 53 74 65 70 20 33 32 20
+##  [3191] 0a 2f 4d 61 74 72 69 78 20 5b 31 20 30 20 30 20 2d 31 20 30 20 35
+##  [3213] 38 30 20 5d 0a 2f 52 65 73 6f 75 72 63 65 73 20 0a 3c 3c 20 2f 58
+##  [3235] 4f 62 6a 65 63 74 20 3c 3c 20 2f 49 6d 31 32 20 20 31 32 20 30 20
+##  [3257] 52 20 3e 3e 20 3e 3e 0a 2f 4c 65 6e 67 74 68 20 32 38 20 0a 3e 3e
+##  [3279] 0a 73 74 72 65 61 6d 0a 31 20 30 20 30 20 2d 33 32 20 30 20 33 32
+##  [3301] 20 63 6d 0a 2f 49 6d 31 32 20 20 44 6f 0a 65 6e 64 73 74 72 65 61
+##  [3323] 6d 0a 65 6e 64 6f 62 6a 0a 36 20 30 20 6f 62 6a 0a 3c 3c 0a 2f 54
+##  [3345] 79 70 65 20 2f 50 61 67 65 0a 2f 50 61 72 65 6e 74 20 33 20 30 20
+##  [3367] 52 0a 2f 43 6f 6e 74 65 6e 74 73 20 31 37 20 30 20 52 0a 2f 52 65
+##  [3389] 73 6f 75 72 63 65 73 20 31 39 20 30 20 52 0a 2f 41 6e 6e 6f 74 73
+##  [3411] 20 32 30 20 30 20 52 0a 2f 4d 65 64 69 61 42 6f 78 20 5b 30 20 30
+##  [3433] 20 31 30 30 30 20 35 38 30 5d 0a 3e 3e 0a 65 6e 64 6f 62 6a 0a 31
+##  [3455] 39 20 30 20 6f 62 6a 0a 3c 3c 0a 2f 43 6f 6c 6f 72 53 70 61 63 65
+##  [3477] 20 3c 3c 0a 2f 50 43 53 70 20 35 20 30 20 52 0a 2f 43 53 70 20 2f
+##  [3499] 44 65 76 69 63 65 52 47 42 0a 2f 43 53 70 67 20 2f 44 65 76 69 63
+##  [3521] 65 47 72 61 79 0a 3e 3e 0a 2f 45 78 74 47 53 74 61 74 65 20 3c 3c
+##  [3543] 0a 2f 47 53 61 20 34 20 30 20 52 0a 3e 3e 0a 2f 50 61 74 74 65 72
+##  [3565] 6e 20 3c 3c 0a 2f 50 61 74 31 34 20 31 34 20 30 20 52 0a 2f 50 61
+##  [3587] 74 31 35 20 31 35 20 30 20 52 0a 2f 50 61 74 31 36 20 31 36 20 30
+##  [3609] 20 52 0a 3e 3e 0a 2f 46 6f 6e 74 20 3c 3c 0a 2f 46 31 31 20 31 31
+##  [3631] 20 30 20 52 0a 3e 3e 0a 2f 58 4f 62 6a 65 63 74 20 3c 3c 0a 2f 49
+##  [3653] 6d 39 20 39 20 30 20 52 0a 3e 3e 0a 3e 3e 0a 65 6e 64 6f 62 6a 0a
+##  [3675] 32 30 20 30 20 6f 62 6a 0a 5b 20 5d 0a 65 6e 64 6f 62 6a 0a 31 37
+##  [3697] 20 30 20 6f 62 6a 0a 3c 3c 0a 2f 4c 65 6e 67 74 68 20 31 38 20 30
+##  [3719] 20 52 0a 2f 46 69 6c 74 65 72 20 2f 46 6c 61 74 65 44 65 63 6f 64
+##  [3741] 65 0a 3e 3e 0a 73 74 72 65 61 6d 0a 78 9c ed 5d 5b af dc b6 11 7e
+##  [3763] 3f bf 62 9f 03 78 cd 8b 78 03 8a 02 b1 1d 17 2d d0 a2 81 0d e4 a1
+##  [3785] e8 43 70 d2 34 08 ec b4 6e 0a f4 ef 97 33 bc 68 46 5a ae 56 5a e9
+##  [3807] ac ce c9 da b0 77 48 ed 0c 67 46 e4 37 43 52 d4 be fe c3 87 ef 0f
+##  [3829] ff fc f5 f0 fa ed 87 7f 1f 1e f3 e7 db 0f 0f f2 20 e2 df 57 f0 61
+##  [3851] bc 38 3c 7e 7e f8 72 f8 f2 f0 ed c3 b7 f1 7f f8 fc f2 50 38 04 fe
+##  [3873] fd f5 f1 97 87 d7 49 d6 43 aa f9 f0 f6 2f 51 ca ff 0e ea f0 a7 f8
+##  [3895] ef cf b1 e6 e7 c3 df fe 1e 3f 7e c8 62 e0 4b 9f 1f a4 10 40 7c 4a
+##  [3917] 04 b4 f5 e9 a1 ff 84 ff 7f 7a f8 ee ab c3 2f d7 b6 d8 b3 4b fc 3b
+##  [3939] 64 af cd ff e7 1f 0f 3f f6 4d 1d 85 cd 7f 9a 34 95 d4 89 83 16 f2
+##  [3961] 10 6c 14 98 24 75 28 fa a0 6d a9 60 be 9b 29 7e d2 ce 2f f5 ab e9
+##  [3983] 06 ca 83 91 fe e0 34 dc c0 a5 8d ca 90 fb 02 7c c6 ff 1e 3f 1f 5e
+##  [4005] ff f1 73 38 1c de fd 0b ee e4 15 e6 38 8b be e9 ac bc 95 73 bc 1d
+##  [4027] 3a 67 d4 b7 b6 33 df 68 87 f6 5b 7f 23 f3 83 97 37 34 df 0a 93 86
+##  [4049] 46 30 c5 fe 5e 54 70 b6 73 c2 78 df a4 07 c3 4e c6 61 17 07 59 17
+##  [4071] ae 93 84 5d 52 62 97 bc 56 54 ba bd 12 6e ef b5 a2 92 ab 24 ba 6a
+##  [4093] 28 6b 0c 67 e0 0d 83 90 63 46 70 e6 c9 6d 39 4d 9f 96 24 a7 1a 05
+##  [4115] c7 99 34 96 af 6d 95 88 9a 6c 16 9d 6c 70 0c 5d db 2c 11 35 d9 2c
+##  [4137] de 10 93 fa ee b5 ed 52 59 d7 8f 03 95 82 8d 19 49 9a 7d e7 95 38
+##  [4159] 75 e7 17 0c 28 95 31 fe 5a 9d 88 a8 2b 95 82 5b ad 12 f2 5e ab 14
+##  [4181] 11 75 a5 52 d0 0f 54 c6 c3 6b b5 a2 b2 26 3b 33 dc 6b 23 57 c2 8b
+##  [4203] 2c e9 12 bc 80 af ae 84 17 45 d4 45 78 01 5f 5e 09 2f b2 a8 8b f0
+##  [4225] 02 3d b3 12 5e 14 59 27 f3 86 78 e3 d3 9f 26 cd f2 86 0b be 0f 59
+##  [4247] 85 a8 59 05 cd 28 16 36 fa e6 e3 c3 eb f7 32 7a c9 1e 3e fe 78 20
+##  [4269] 93 0d 71 f8 f8 f9 c1 39 7f 78 65 e2 a5 1f 0e bf 8b 9c f2 f7 87 8f
+##  [4291] 3f 3f f8 a3 0f c2 2a 83 d3 85 7c 45 e1 15 77 14 41 3b 23 e8 15 dd
+##  [4313] bc d2 e1 15 73 d4 ca 4b 2e cd 34 79 6c d2 a0 af 70 58 f1 cd c7 41
+##  [4335] 0a 34 be f1 1e 72 92 2e da 29 c0 d6 7a b3 c4 d1 aa ce 2b db 29 c0
+##  [4357] 03 2b 3b ed 74 08 48 0b 1d cd d4 22 0c 52 b9 ea 74 af bb 83 85 99
+##  [4379] 13 10 9d 8a 13 a4 10 6c 22 60 da 06 7f cf 71 ca c8 19 82 03 e2 13
+##  [4401] 12 99 53 1c 3b ab bc 92 3a e8 a8 45 67 8c f0 46 d8 00 74 e7 b4 d6
+##  [4423] 9d 37 6d b9 b1 53 07 d4 28 a6 27 1a e5 66 02 e4 46 6f 2a d3 85 98
+##  [4445] be 44 5a 49 63 bd 55 0e 68 40 40 a5 8d 3a 27 17 2d 05 03 ad 28 96
+##  [4467] 26 b9 8b bb fb 26 93 d3 7c 9b 93 aa 91 f8 d4 eb 0c 97 2a 81 97 c6
+##  [4489] 13 da 67 6b 43 cf 13 bb 47 e2 f1 e6 d6 76 ef cd b1 7b d3 67 77 9d
+##  [4511] f5 de 23 9e 95 37 9f 7b 77 bb 63 e3 7e 1c bb 37 7d 76 d7 59 ef 3d
+##  [4533] e2 59 79 f3 b9 77 b7 3b 36 ee c7 b1 7b d3 67 77 9d f5 de 23 9e 95
+##  [4555] 37 9f 7b 77 bb 63 e3 7e 1c bb 37 7d 76 d7 59 ef 3d e2 99 78 73 87
+##  [4577] eb ef 5d 2c 68 75 c1 fa fb 68 5d dc 0f 2b 02 56 48 79 34 9d f5 ce
+##  [4599] 10 de af f1 4a 77 ec d2 62 3b b9 f2 66 28 e4 ed b0 e2 5d e2 ed 2b
+##  [4621] be 99 fc c6 fb 66 73 23 9d 87 bc 52 4c 4a 1f ca 90 b2 b9 cb 30 2d
+##  [4643] 7d 68 8c 54 93 ed b7 37 42 46 ce 6c 3b a2 bd 33 d2 be 57 cd 86 a5
+##  [4665] ee b7 48 b6 19 f0 46 ba 83 16 36 b2 58 a1 91 fa 14 a9 ee 28 45 67
+##  [4687] 4c aa 80 ad b2 f8 19 7b ae e9 64 29 fa c3 23 ee a1 69 ed 91 03 a8
+##  [4709] 80 5c 5e 1f a8 80 38 0c 50 72 fc 7c 4c ad 75 d0 bc 91 06 05 76 16
+##  [4731] 2b 62 91 0a 48 45 8f 1c a9 b5 4f 99 aa 6a 50 01 02 8a c9 8e c7 bd
+##  [4753] c6 b6 17 eb e8 fc 75 34 cc 54 c3 4c df 3c a5 f0 ea 4f d9 19 ae 3a
+##  [4775] c3 21 8f 3e 1a a3 a0 00 ff a2 69 f0 09 1b 67 4e e9 5c 4c ce e8 aa
+##  [4797] 33 90 02 2e e5 c0 5f bd 00 1d 92 33 e2 67 76 46 a4 40 07 0b 02 6d
+##  [4819] 50 58 11 8b 54 40 2e 22 87 ad ce b0 54 0d 2a 20 b6 53 ec 78 ba 5e
+##  [4841] b7 b7 6e fd 5c 13 86 5e 70 47 84 9d a6 f9 46 ff f4 f7 2f 48 34 e6
+##  [4863] 35 7a 3e d1 30 5a 41 a6 e1 4a cc e8 9a 99 46 3b 36 b5 23 90 19 86
+##  [4885] be 76 18 1b c5 ef 61 66 43 c3 19 bf bb a6 ec 69 37 69 fe f0 46 28
+##  [4907] 90 d3 b9 02 39 9d 67 58 da 05 86 a5 58 44 f8 00 2a c1 07 52 3d 96
+##  [4929] 12 01 80 a5 9d cb 58 8a ad 21 84 d9 08 04 04 4b 6d 42 9a 1e 8c 5d
+##  [4951] 86 0f a4 44 82 28 c7 21 dd 51 2c 2d 76 00 7c 58 29 90 07 6c 2a e0
+##  [4973] 13 a9 1e 12 7d 52 49 f8 0a 89 58 0c 68 13 b4 8c 20 9a a8 0a 89 44
+##  [4995] 80 06 01 05 e0 b0 b5 0c a2 a1 87 44 9f 54 22 02 52 b1 78 41 84 c4
+##  [5017] c1 d4 20 02 40 c9 6c 07 d8 f4 e3 57 57 dd e6 6d 10 2b a9 ef 6a e7
+##  [5039] c9 6e 63 b1 a7 f3 2c f6 60 31 75 1e 5f 3b 8f 67 b1 87 08 80 d8 d3
+##  [5061] b9 1c 7b 92 03 93 db 3c 8d 3d b1 c8 83 97 af 9d c7 d7 ce c3 d5 20
+##  [5083] 02 30 40 86 76 ec 59 dd d1 51 f8 5f cb e9 86 bf 7e ff 5f d9 0d 06
+##  [5105] 64 1a 86 5d 54 ad 2b 0f e8 e4 70 c5 d8 0c 63 5b 1a 71 98 48 3b 10
+##  [5127] b9 a1 1b 5e d0 d3 61 56 75 34 68 e4 e9 d2 86 13 0d 9b 81 39 36 1d
+##  [5149] 64 c1 ec a0 18 66 07 cd c0 12 8b 38 24 80 4a c3 0e a9 1e 72 89 00
+##  [5171] 00 64 90 9c 30 3b d7 44 0e 23 19 66 c3 33 7f 44 00 16 b1 0d a0 d2
+##  [5193] b0 43 aa 57 83 08 00 25 b3 b2 bb 9d 68 bc 58 47 e7 af a3 61 75 06
+##  [5215] 15 48 f3 94 ca 13 8d 24 c4 55 67 20 d8 07 c9 c0 3e e1 69 45 d9 1c
+##  [5237] c7 c0 19 aa 3a 43 31 ac 26 02 00 c9 83 2c 60 6f 74 01 7b a3 18 d8
+##  [5259] 1b 2e 20 15 91 43 55 67 70 35 88 00 50 32 db 71 9f 68 3c b7 89 c6
+##  [5281] 1e b1 df 7a 36 61 70 9b 63 7f 28 6b 1f 4e 97 45 00 a7 2d 85 24 a7
+##  [5303] 59 a2 9c 8a 30 42 90 c2 51 98 a8 8a 28 54 40 1c f7 28 39 41 52 28
+##  [5325] 6b 1f 36 b0 b5 8f 58 e4 98 56 d6 3e 90 4a a3 30 f0 25 98 c0 d6 3e
+##  [5347] 8a 1d fb c5 fe 97 ea e8 fc 75 34 cc 55 c3 48 f3 94 2a d8 1f ca 22
+##  [5369] 53 72 86 43 1e 43 b1 3f 9a 46 41 37 15 93 33 6c 75 06 5b 23 a2 02
+##  [5391] 22 b0 a3 e4 84 fd a1 2c 32 d9 c0 16 99 62 91 07 8f 3a 07 0b 75 9e
+##  [5413] 17 98 1a 54 00 06 a8 fb 22 d3 1d fb 2f d6 6a e2 54 88 e4 8b 45 6a
+##  [5435] 6b ec 77 5d c9 da 9c 0b 65 e4 7a c1 20 c9 b3 3c 30 15 71 14 7a 59
+##  [5457] 46 a1 67 d9 24 15 00 90 e4 42 86 24 6c 0d 91 c0 c5 6f 13 48 8a 45
+##  [5479] 8e 69 21 8f 42 a4 44 1a e9 81 23 63 a0 90 54 ec d8 2d f6 bf 58 47
+##  [5501] e7 af 83 61 5e 56 c3 48 f3 94 ca d8 9f 84 b8 ea 0c c4 7e 17 18 f6
+##  [5523] 7b c1 b0 df 8b ea 0c 51 9d 21 18 f6 13 01 80 fd 2e 64 ec c7 d6 10
+##  [5545] fb 5d 27 28 f6 bb 8e 0b 48 45 e4 10 c5 19 1d 57 83 08 00 25 b3 1d
+##  [5567] 77 ec bf 63 ff f5 d8 6f 2c c3 7e b1 39 f6 fb 92 b5 79 55 66 ec 5e
+##  [5589] b1 3d 4f af 58 1e 98 8a 30 42 90 c2 51 98 a8 8a 28 54 40 1c 3b 28
+##  [5611] 39 41 92 2f 59 a0 f3 9a 41 92 d7 1c d3 74 19 85 5e 97 51 e8 35 47
+##  [5633] 46 cd 20 29 db b1 5f ec 7f a9 8e ce 5f 47 c3 4c 35 8c 34 4f a9 82
+##  [5655] fd de 64 ec 4f ce 70 c8 c3 36 97 a3 69 14 74 53 31 39 a3 ab ce 60
+##  [5677] 9b cb 54 40 04 76 94 9c b0 df 9b 82 fd be 63 d8 ef 99 80 5c 44 8e
+##  [5699] ae 3a 83 a9 41 05 60 80 32 77 ec bf 63 ff a5 5a 9d c7 7e 2f 04 c3
+##  [5721] 7e 4f b0 7f 87 da c6 2c 28 a4 47 dd a8 d2 61 eb 80 e5 5d 59 3f 09
+##  [5743] ba a4 9a 41 b3 b5 f3 a0 19 80 a5 22 0c 6b a4 10 3a 12 55 61 90 0a
+##  [5765] 88 60 85 92 11 47 b1 35 84 af 68 29 c5 d1 58 64 40 ec ca fa 09 52
+##  [5787] 08 1d 89 ea e1 dc b1 f5 93 62 c7 6e 03 d6 8b 75 74 fe 3a 1a a6 ab
+##  [5809] 61 ba 6f 9e 52 39 60 25 21 ae 3a c3 21 0f db a4 88 a6 d1 48 91 8a
+##  [5831] c9 19 aa 3a 83 ed 31 50 01 31 1a a1 64 0c 58 d8 1a 06 2c ef d8 42
+##  [5853] 55 2c b2 88 e7 6c 75 86 ad ce 60 0b 55 54 00 44 55 77 5f a8 ba 07
+##  [5875] ac 8b b5 9a 08 01 41 9d d8 a0 26 cf 12 7d 3d ac d8 7c 3a 13 74 05
+##  [5897] ad e0 cb d8 0e 81 82 16 8a 20 70 91 cb 30 8a 12 89 43 35 93 3d 70
+##  [5919] 11 21 00 5c 20 1d 81 2b d4 25 ee a0 19 70 05 6d 38 f2 15 e0 42 4a
+##  [5941] 24 3c 30 1c 3f 19 70 15 5b 76 1b 21 5e b4 b3 f3 d7 8b 3f 92 75 89
+##  [5963] 2c 0a 50 2a c7 89 24 c6 55 97 60 9c 08 9e c5 89 10 58 9c 08 e5 b1
+##  [5985] 37 a4 52 9c 48 54 8d 13 44 00 c4 09 90 8c 71 22 e8 12 27 82 66 71
+##  [6007] 22 f0 1d 91 5c 44 0e 5b dd c1 e2 04 15 80 c1 ec 1e 27 ee 71 e2 62
+##  [6029] ad ce c7 89 60 f8 86 c6 9b e6 59 99 f6 33 ae a3 a3 31 ef fb 50 d2
+##  [6051] 7e a9 67 ef ad f3 e6 8e 18 cf 1b a4 60 2b 14 1f ae 3d bc f2 e5 f8
+##  [6073] 90 7c b7 e0 f0 48 fb f8 cc fb 53 a1 72 55 2b 8c 31 c7 ce e8 d8 2e
+##  [6095] b1 62 7c 8e 66 f4 c8 f0 e8 0c d2 c9 0d aa 55 55 75 de 1d 35 3e 2b
+##  [6117] 4d 55 5d 72 8e 67 d4 8f 46 47 bb 9e c0 f1 50 50 e1 ec 73 7d ab 36
+##  [6139] 18 bd e7 b2 8b 62 c3 72 fa 30 55 fb ec d4 c8 5d a3 fe d2 f4 7d 7e
+##  [6161] b4 dc 1e 95 f4 83 f6 66 bc 91 6e c6 09 b0 77 9b 3b 56 a9 90 ed 64
+##  [6183] 8e 1d 1d 7d 7b 3f 3c c7 36 fc 86 4a 99 71 38 3a 6b f8 89 80 16 f2
+##  [6205] cd 3b d8 d6 f4 9a 4a 08 24 55 11 77 d5 8d 6c 4b 6b 1d 34 38 d5 1b
+##  [6227] 16 b8 4f b5 0e 54 8c da 1d 75 93 31 9e 35 df a9 78 c6 59 ab 1c 4c
+##  [6249] 6c 36 7c 26 b6 ec e7 2e 4d 43 43 db f2 b6 fb da 7d 7a a4 40 23 30
+##  [6271] b5 6f e4 96 d0 d0 19 48 96 52 74 95 31 f7 ce 0d eb d6 38 3f e3 82
+##  [6293] 76 34 db 12 37 17 39 96 1e 1f a2 9e 3b f1 3b 04 97 b9 5c ce 4a 68
+##  [6315] f4 51 69 f0 12 8d af aa d9 83 da 9d fb cc 78 9b 02 87 db 64 a4 56
+##  [6337] 32 9b 97 a0 de e8 ae 8f 8e 95 8d 0e 90 4f f6 9c 45 9d 7a 24 75 49
+##  [6359] f0 1a 59 d3 9c 74 a8 19 83 a8 d9 95 d4 e4 1b 02 66 0c a2 0b 46 64
+##  [6381] 73 de a0 dc c5 3a 3f 41 7e e4 7d 38 86 9a 1f 85 96 39 ca 4f 06 f8
+##  [6403] 25 ef 57 98 42 a9 4b a2 da 92 98 bc 68 26 38 43 a5 25 19 f6 13 cd
+##  [6425] 6a 5c 45 a0 93 4f ac af 9b 7c c7 de a0 30 8c 42 c3 b2 39 ce da 88
+##  [6447] fd 75 f3 6e 8c 86 f3 fc 9c 74 8e 22 6b 86 e0 19 19 53 3b 34 9e 11
+##  [6469] d2 7e e3 f8 74 38 58 32 98 66 0c 8c f6 0b 5c 16 e4 dc 67 ae 34 a5
+##  [6491] 9d c9 28 46 37 70 18 20 d4 2a 13 bd 19 61 f5 9a 3e 36 29 4c bd 9b
+##  [6513] 0c 88 0b e6 34 67 5c b2 c5 b2 c3 a6 f3 03 21 8e 38 3d 80 4a ef e6
+##  [6535] df bf 49 b0 9f d5 71 46 88 f7 42 e6 ba 4b d2 83 33 c3 6b c9 0c f6
+##  [6557] cd 5e a6 44 ee 37 38 25 aa 79 c1 53 21 e3 2a d1 77 db 95 93 31 36
+##  [6579] 2f 58 38 5c 14 52 17 c0 f7 82 59 e7 1a 33 57 f5 4d 73 c2 31 39 d5
+##  [6601] 5b 04 9d 97 77 4f f5 7e 32 cf 1a a9 b8 e4 96 ac 91 f2 ae b2 ae b7
+##  [6623] 04 dc 67 4c ea b7 9f 06 43 8c 57 ba da b3 fd 7e 99 74 ea 68 42 da
+##  [6645] a0 ec 1b 3e d3 2f af 48 ea c7 37 7d 49 c8 1d 4a d5 a2 39 fe da 3d
+##  [6667] 67 98 41 ef 27 a9 79 46 c8 a7 b3 8f c4 d1 3a 79 e1 f6 fc 78 5b b5
+##  [6689] 69 d5 3a b7 60 0d 6c 5a a3 9b 3e 0d 36 5d 34 83 1e 6d dd cc 78 35
+##  [6711] e7 ec 99 df ed b3 59 02 6b bf 99 6c 56 d5 2d e6 f1 7a f3 82 48 3b
+##  [6733] a7 cb 6c 3b 36 67 e0 f4 e5 ab a1 33 96 ef e7 04 a6 05 f0 b8 4a c2
+##  [6755] 7d a6 33 2f 01 a1 c9 c0 70 66 ff 78 37 6b 3b e3 35 b3 51 1e 3f 7b
+##  [6777] 8d 77 cb bc 2c 18 55 f7 43 54 fb 79 91 e9 fd 10 ad 26 c0 7d f3 74
+##  [6799] d6 57 3f 9e 7c a8 7b dd 74 d6 98 63 1e 6c af 94 53 4d b7 35 9f 02
+##  [6821] 59 65 de 35 8a 92 63 10 6e 2f 50 b5 d7 b7 57 99 33 4d 2f bd 8f 20
+##  [6843] 76 b4 51 b8 7c 6d eb dc f8 bb 66 6b 6f 95 55 96 fb a3 41 fb 7b 34
+##  [6865] e8 4c 33 ed 14 64 c6 f6 d9 e5 8b 1a 33 9e 5f 9c 93 b7 6f bf dd da
+##  [6887] 99 ee 88 fd 19 c1 38 34 7b ec 15 63 77 3c ab bb 7c 99 a0 1d 77 9f
+##  [6909] c3 dc a2 06 b7 df d0 dc a2 c6 d5 a7 7e 1a e3 09 32 96 98 3c 1c 3b
+##  [6931] bc 51 27 12 88 4d 1f 80 89 09 9f c0 67 af cf 67 2e 0b 9e c2 9d 03
+##  [6953] 72 97 cf 91 e6 cc bc 96 f4 82 f6 78 da fe 31 f8 d4 cf 2b 56 ce d9
+##  [6975] 11 ba fc 99 b4 33 a9 c9 e5 ab f2 6d 08 19 e7 9c d7 3f ad 79 49 08
+##  [6997] bf 05 10 f6 dd 60 cd 83 5d f8 13 f5 0a 0f f6 21 65 e2 25 a5 02 a3
+##  [7019] e0 30 df 77 fc 10 d8 19 30 6e 9d c4 6a 7f 41 46 f2 c4 59 b0 51 1b
+##  [7041] d2 4a d0 eb 88 de 43 2b 73 85 73 56 76 2a f6 73 51 c9 a8 34 14 f3
+##  [7063] 57 a1 f8 08 16 1e 95 d2 de b8 72 7d c0 4d a5 3f 16 87 54 16 ca 6d
+##  [7085] b8 74 93 a5 d7 d6 e1 ba e4 dc 92 4b c7 97 cd 67 4f f7 16 95 8a 2c
+##  [7107] 48 29 4f 2d 82 22 b3 08 2a 88 45 b1 38 e0 e6 6d 96 8a cc c2 b8 0d
+##  [7129] 97 6e b2 74 62 51 d1 ad 72 87 13 16 9d bf 83 bc 13 48 da 09 c4 51
+##  [7151] 48 21 72 f3 c7 10 32 99 fa 05 77 36 75 97 3b 51 ff e9 e1 c3 b2 9e
+##  [7173] 4a 3b e2 e0 14 e6 35 62 66 0e c9 15 5a bd 6a a4 52 f6 18 2d 8e b6
+##  [7195] 73 c2 78 78 81 d0 70 38 46 af 0b 78 5f 28 44 98 fc 0e fd cb 5a 5e
+##  [7217] 77 3d c4 b2 f3 46 67 f6 aa a7 57 f9 9a f3 ad 25 13 cb 39 cf b0 5d
+##  [7239] 34 0d d8 26 04 44 4b 0f 52 c3 af 18 26 4a c3 7b 33 82 60 54 b7 93
+##  [7261] 10 e0 a5 06 bd 7a 04 28 15 19 a7 a2 05 15 b2 a2 d2 50 2c f8 10 8b
+##  [7283] 8f 60 61 85 bc 74 7d c0 4d a5 3f 16 87 14 16 c6 ad b9 74 9d a5 d7
+##  [7305] d6 e1 ba e6 dc 9a 4b 47 c0 cc 9e 26 16 e5 8a a2 93 0f cc a2 58 e4
+##  [7327] 16 c5 0a 6a 51 4c e8 38 f7 c0 a2 5c 51 74 a2 dc 9a 4b d7 59 3a b5
+##  [7349] 28 eb 56 b8 b9 ee 9b 86 00 ee 6c e2 2e ef 4f d4 df 43 c0 93 84 00
+##  [7371] 1c 1f 12 de fc 76 db 10 00 7a 90 23 15 7a c9 b9 b2 25 4f 7f 8f 02
+##  [7393] ca 82 47 91 d7 5c 7e dc f2 95 f8 71 ba 28 83 3a 7c ce 94 8c 97 ac
+##  [7415] e3 94 da 49 94 b0 f0 6e 15 f8 cd 8b 02 12 a5 22 43 59 b4 a0 a2 5a
+##  [7437] 48 c5 02 21 b1 08 3f 36 d5 e7 ed e9 fa 80 9b 4a 7f 2c 0e 29 2c 8c
+##  [7459] 5b 72 e9 32 4b af ad c3 75 cb b9 2d 97 8e 98 9a 3d 4d 2c 72 5c 27
+##  [7481] d7 31 8b 62 91 5b 14 2b a8 45 ae 1b 70 0f 2c ca 15 45 27 ca 2d b9
+##  [7503] 74 99 a5 53 8b 1c f7 87 33 27 2c da 26 4a 70 67 53 77 e9 13 f5 f7
+##  [7525] 28 f1 24 51 02 c7 87 c3 1f 33 bf 69 94 48 cf 40 f7 a7 0b da eb f7
+##  [7547] a3 c4 7d 54 71 f3 47 16 f2 c3 6d 9b be 5b 32 f6 14 5c 1a 4a 14 2c
+##  [7569] 08 05 a3 19 b5 97 a5 21 ef 60 b9 83 ac 0c 94 8a 92 07 3b d9 af 8a
+##  [7591] 58 2c e6 af 2a 5c 48 81 8a ba ae 81 d7 07 dc 54 fa 63 71 48 cd 83
+##  [7613] 29 b7 e1 d2 4d 96 5e 5b 87 eb 8a 73 2b 2e 1d f1 31 7b ba b7 a8 54
+##  [7635] 64 41 f0 f0 04 b1 08 8a cc 22 a8 20 16 c1 5b 87 38 37 6f b3 54 64
+##  [7657] 16 c6 6d b8 74 93 a5 13 8b 8a 6e 95 5b 9f b0 68 a3 79 01 73 36 75
+##  [7679] d7 a9 fa 3b e2 af 86 f8 e2 68 0a e0 47 3a e8 fc 87 d5 f3 21 1a d5
+##  [7701] 10 f0 26 ea 1b cf 15 a2 1e f4 71 a3 25 8f c1 cd de fb 3e 05 e0 4b
+##  [7723] 1e 2f 5c 72 16 6b c6 eb 9f 6e b8 0a 05 c1 59 75 3a cf 2f 54 07 73
+##  [7745] 09 6b 02 a3 f4 4e a2 0d e4 e8 51 2f 3e bf 80 8a f1 fc 02 94 26 49
+##  [7767] 29 14 d9 fc 22 5f 1f 70 53 e9 8f c5 21 27 e6 17 aa 53 5c ba e2 f3
+##  [7789] 8b 74 dd 72 6e cb a5 a7 f9 45 f2 34 b1 28 57 14 9d 8c 67 16 19 3f
+##  [7811] b0 c8 78 66 91 f1 03 ee 81 45 b9 a2 e8 44 b9 15 97 ae b2 74 6a 51
+##  [7833] d6 ad 72 87 13 16 6d 3e bf 18 b8 cb 9d a8 bf 47 9b 9b 45 1b 1c 33
+##  [7855] 31 ef e9 ba 1d cc 39 54 7d e3 91 4e 00 3e ef 38 49 7b 0e b0 e0 f1
+##  [7877] b0 c9 17 75 6c b9 d9 2c e2 00 76 0e 59 80 c2 97 c8 1a cb 28 b7 13
+##  [7899] 8c 97 42 83 5e 64 b3 39 57 94 85 0e d1 67 c0 51 69 28 16 00 70 0e
+##  [7921] 5f e8 db 67 d0 e9 fa 80 9b 4a 7f 2c 0e a9 cb 2c 94 db 72 e9 36 4b
+##  [7943] af ad c3 75 cd b9 35 97 8e 88 98 3d 4d 2c ca 15 45 27 63 98 45 c6
+##  [7965] 0c 2c 32 86 59 64 cc 80 7b 60 51 ae 28 3a 51 6e cb a5 db 2c 9d 5a
+##  [7987] 94 75 ab dc f6 84 45 1b 6d 36 33 67 53 77 75 27 ea ef 18 ff 34 9b
+##  [8009] cd 30 3e 6c 34 41 df 78 b3 39 ea 41 9e 5d 5b 19 81 9f e4 9d a0 9b
+##  [8031] fe 66 ba c8 00 9f 28 fc e5 3b e9 19 b5 17 80 87 5f dd 66 e3 bb 54
+##  [8053] d4 a4 55 50 38 84 22 83 43 a8 20 70 98 0d 26 dc 1c b0 4a 45 4d 5a
+##  [8075] 05 85 43 26 dd 66 e9 04 0e 8b 6e 95 5b 9e 80 c3 ec e9 de a2 52 91
+##  [8097] 05 39 e9 a8 45 50 64 16 41 05 b1 28 16 07 dc bc cd 52 91 59 18 b7
+##  [8119] e5 d2 6d 96 4e 2c 2a ba 55 6e ff 64 00 cf 9d 4d dd 65 ef 00 7f b3
+##  [8141] 4d 02 18 1f 11 e0 ed 8d b7 92 ed e0 58 d5 92 37 8a 5c 7e 12 ea cc
+##  [8163] b2 cd ba af 87 5d f0 92 ae 49 0d b6 fc 21 46 55 66 0a 89 c2 9f d1
+##  [8185] 33 9c da 4b 20 81 1f 8c e0 38 a2 d8 4c 21 5a c0 60 57 0d 66 0a 50
+##  [8207] 41 61 57 a9 01 f7 00 76 15 9b 29 30 6e cb a5 db 2c 9d c2 ae d2 9c
+##  [8229] fb d4 4c 21 7b 9a ec a6 18 a6 93 37 92 5a e4 c9 52 3b 5a 04 15 c4
+##  [8251] 22 cf 03 ab 1f 06 2f cf 83 1b e3 b6 5c ba cd d2 89 45 45 b7 ca ad
+##  [8273] 9e 2c 90 70 67 53 77 9d 0a 30 f7 40 f2 24 81 04 c7 07 6c 35 eb 1b
+##  [8295] 6f 37 83 22 24 92 b4 df e1 32 e7 30 e1 2a af 10 be fc e0 da 2a e7
+##  [8317] 71 17 99 d3 0c 3e 73 ce b0 8f 2c 7f db 07 ae ab c6 52 ee 92 87 6f
+##  [8339] 1f fe 0f 27 a6 99 08 65 6e 64 73 74 72 65 61 6d 0a 65 6e 64 6f 62
+##  [8361] 6a 0a 31 38 20 30 20 6f 62 6a 0a 34 35 39 33 0a 65 6e 64 6f 62 6a
+##  [8383] 0a 32 31 20 30 20 6f 62 6a 0a 3c 3c 20 2f 54 79 70 65 20 2f 46 6f
+##  [8405] 6e 74 44 65 73 63 72 69 70 74 6f 72 0a 2f 46 6f 6e 74 4e 61 6d 65
+##  [8427] 20 2f 51 56 41 41 41 41 2b 54 69 6d 65 73 2d 52 6f 6d 61 6e 0a 2f
+##  [8449] 46 6c 61 67 73 20 34 20 0a 2f 46 6f 6e 74 42 42 6f 78 20 5b 2d 32
+##  [8471] 30 33 2e 31 32 35 30 30 30 20 2d 39 34 39 2e 37 30 37 30 33 31 20
+##  [8493] 31 37 30 30 2e 31 39 35 33 31 20 37 35 30 20 5d 0a 2f 49 74 61 6c
+##  [8515] 69 63 41 6e 67 6c 65 20 30 20 0a 2f 41 73 63 65 6e 74 20 37 35 30
+##  [8537] 20 0a 2f 44 65 73 63 65 6e 74 20 2d 32 35 30 20 0a 2f 43 61 70 48
+##  [8559] 65 69 67 68 74 20 36 36 31 2e 36 32 31 30 39 33 20 0a 2f 53 74 65
+##  [8581] 6d 56 20 34 39 2e 33 31 36 34 30 36 32 20 0a 2f 46 6f 6e 74 46 69
+##  [8603] 6c 65 32 20 32 32 20 30 20 52 0a 3e 3e 20 65 6e 64 6f 62 6a 0a 32
+##  [8625] 32 20 30 20 6f 62 6a 0a 3c 3c 0a 2f 4c 65 6e 67 74 68 31 20 39 38
+##  [8647] 37 36 20 0a 2f 4c 65 6e 67 74 68 20 32 35 20 30 20 52 0a 2f 46 69
+##  [8669] 6c 74 65 72 20 2f 46 6c 61 74 65 44 65 63 6f 64 65 0a 3e 3e 0a 73
+##  [8691] 74 72 65 61 6d 0a 78 9c ad 5a 09 7c 1b d5 99 9f 6f 46 23 59 b7 65
+##  [8713] dd b2 8e 19 8d 2e df b2 64 59 76 7c c7 89 ed d8 39 1c 27 4e 8c e3
+##  [8735] d8 51 6c c5 76 e2 2b 8e 9d 9b 24 75 08 81 00 21 04 68 9a d0 42 02
+##  [8757] 29 4b 92 86 2c 90 a5 64 5b 20 a5 65 81 c2 af 1b 7e 0b 2d db 42 b7
+##  [8779] e5 68 09 c7 2e ed af 4b 97 b5 35 de 6f 46 92 63 0a 7b fd 76 15 8f
+##  [8801] f4 cd 7b 6f de fb de 77 fe bf 37 21 80 20 88 0c e2 00 41 11 c4 8a
+##  [8823] 55 45 a1 27 06 7d 59 d8 72 27 5e 1b fa 87 76 6d fa 7e 65 f9 fb 48
+##  [8845] 7f 42 10 2e c9 40 3c d6 b7 a9 a8 e9 0a d2 9f 61 5b e9 00 36 a8 9d
+##  [8867] f4 0b 04 c1 04 f0 de 33 30 3c b1 f3 cd f7 95 2a bc 5f 8a f7 6f 0c
+##  [8889] 8d f6 c6 5e f9 97 d7 c7 09 82 65 f0 7e 68 38 b6 73 8c 58 40 6c c1
+##  [8911] 7b 61 7e 66 24 36 1c ff bb b3 c3 77 e0 fd f7 08 42 f2 21 41 49 fe
+##  [8933] 16 8e 11 34 41 90 3f 24 8f 08 5c 24 7f e1 1d a2 95 14 b8 12 ba b0
+##  [8955] 93 20 7e 43 90 b3 ad 04 d3 49 a4 3e 63 bb c6 b7 11 b5 04 31 4d 4a
+##  [8977] 09 1e ef 15 f9 d4 30 43 c0 43 2b 70 77 d4 19 ba 45 58 4d 7c 92 c5
+##  [8999] 39 4e e0 3d 45 c8 08 22 ac 63 75 7e bc 58 7a fb 33 d3 ff 4e b7 fc
+##  [9021] fb df 3c 43 fd 6a c6 8b 0b 12 ed b3 1f 50 9f d2 03 44 0d 41 e8 4d
+##  [9043] 66 53 38 14 2d 8d 96 f8 7d 7e fc f3 45 7c d1 d2 70 28 d5 18 d6 73
+##  [9065] d8 c4 b9 65 52 a3 c1 6c 32 e3 9f c9 6c 90 49 39 77 b2 51 c6 51 b7
+##  [9087] 84 1b 77 3d 1d 5b d2 00 4d 45 27 2e b5 16 ae 85 81 fe f3 0d bd 31
+##  [9109] ad 37 53 2d cf 2d 28 0e 0f 8f 0e b5 57 d5 04 83 f1 cb e7 16 d7 c3
+##  [9131] ae dd cf f6 f4 0f 68 3d 2a 0d 55 50 05 df 3e d2 76 77 75 d5 58 5f
+##  [9153] 73 61 cf 70 71 49 6c f2 d4 40 bf 9b cb ca 62 f9 a5 3f 59 b1 bc 38
+##  [9175] d4 d1 1a 5d 50 35 3a b0 f6 a6 1d 67 86 86 3c 1e 93 d9 02 97 85 5d
+##  [9197] fa 67 7f 4f 75 53 e7 09 2b e1 c6 cd 20 ab 46 16 f9 8a 9a 90 5f b3
+##  [9219] 14 99 93 fa 7d d1 92 68 a9 40 cb 58 64 1f de bc 73 cb e6 c4 21 45
+##  [9241] 4f f7 c1 c1 a6 c6 6a 2e 67 6c eb 23 3f dc 34 00 3b b6 df 3a 5e c9
+##  [9263] aa e1 51 65 76 88 3a 1f eb 7d f2 fa e0 16 80 b2 68 5c 75 60 cb 10
+##  [9285] dc 7d f4 ca 2b c7 ef 69 82 be d2 b6 de 50 87 b0 6e f3 ec 67 d4 ed
+##  [9307] d4 65 42 45 34 e2 ba d2 a4 4c 84 65 23 34 ca cc 1b 11 24 85 ad 66
+##  [9329] 43 52 48 7e 14 52 a4 24 29 4c a3 0e 1b c3 02 87 46 69 52 7c fe 14
+##  [9351] a7 64 cb 44 f3 b1 4a 7f b0 ae ba 92 27 e0 f8 3a 30 80 9e db 1c 2e
+##  [9373] 2c 02 5a 02 5e 93 bd c0 62 59 db fe d8 8f 1a bc 19 ea 1c 53 a6 c6
+##  [9395] c7 78 cb 16 2c 72 32 e4 b2 48 d7 ca 35 35 35 64 ae af b0 73 ac 2b
+##  [9417] d7 01 e0 f3 96 fb 8e 6d ac 18 68 8f e7 d4 83 d5 5e a8 b2 3b 65 65
+##  [9439] 26 0d 38 ed de 86 65 4b f7 2d be 85 1f ad 30 fa 21 43 96 5d e2 b7
+##  [9461] fa f2 f3 aa eb 5d a5 50 5d 29 d8 83 1c b7 f7 04 75 89 28 21 08 64
+##  [9483] b1 34 a2 2b 49 6e 45 16 29 15 ee a3 28 5e a3 51 20 42 37 b6 26 6c
+##  [9505] c0 a8 93 a2 04 8c ac 7c 9d cb 99 65 08 2a b5 ba ac f2 ca 4a 73 71
+##  [9527] a9 8c 84 da ca 05 75 61 c6 05 16 9b c7 ef f5 9b b8 70 18 72 02 eb
+##  [9549] 79 3d 2b b3 59 5a e1 c7 1b f3 73 01 28 09 ab 37 19 e5 7a 0b 48 e8
+##  [9571] cc b3 1d e1 62 70 32 05 39 76 07 70 6e 80 68 79 25 5f b5 86 e5 28
+##  [9593] 16 39 2c 9a fd 94 6a 41 0e 73 52 1a 4f 4b d1 9f 32 4f 41 e8 a2 c5
+##  [9615] 9a 53 3d 82 e4 21 b1 b7 ab 13 4c e6 a0 c7 9a ad 52 69 5c 6c e9 f8
+##  [9637] f2 56 58 db 7e 5f 7f 5b 41 85 bd bc 66 f7 83 df de b9 f3 e0 14 75
+##  [9659] a9 76 e1 52 d6 ee b0 98 8b 82 25 66 63 6f fc ec b7 76 ec 5c e4 5b
+##  [9681] a3 db d9 70 eb 9e dd 6f fc fd fd f7 09 32 42 0f a5 3e a0 27 88 f2
+##  [9703] b4 8c 70 65 bf 3b 2d a3 a8 59 57 9a 54 b5 59 90 89 d9 c8 46 d2 83
+##  [9725] 44 9b 10 f4 8f 8d 59 6d 36 2b a8 33 a3 4a 85 52 9d b7 b0 c6 b6 81
+##  [9747] ac 0e 75 6c 7a b8 c2 05 60 33 2f e3 57 ac c1 6e 17 db b9 7c 49 33
+##  [9769] d8 ac 6b f8 46 bb c2 65 1f a5 ae 46 ed 56 14 16 78 54 86 ac 0c a7
+##  [9791] 2c 71 aa 91 ab bc ad 69 92 1f d8 e2 62 14 76 bb ca 61 1f 85 fb 63
+##  [9813] 95 95 28 b2 4c 5e bf 35 db a1 b4 0b f6 7a 76 f6 5f e0 76 ea 22 a1
+##  [9835] 25 5c b8 01 c3 0d cf 10 d4 48 a5 ad 33 e5 d2 70 8b db 93 17 74 31
+##  [9857] c0 b8 8a f2 3c ee 89 3c 17 cb b8 82 85 1e 37 b0 2c 55 13 c2 0e ce
+##  [9879] 9d 5f c8 ba 90 bd 99 29 96 2d ca e7 58 24 0b 0b dc 1c ae 14 9e fd
+##  [9901] 2d f5 02 7a a4 b8 92 de 97 5c c1 98 0a 14 90 52 8f e8 29 28 8f 12
+##  [9923] 38 70 f3 cb 2f 1e 9c da b7 ff a5 ab 87 6e 85 73 ad e5 71 58 b9 e2
+##  [9945] d8 68 75 25 2c 5d 0e d7 5e 3a 72 1b 4c 1d fc c5 cb c7 ef bd eb 2e
+##  [9967] 72 5b 49 d7 af 9f 3a f9 00 60 54 f9 ab ef 9d 3a 29 e8 21 77 f6 63
+##  [9989] fa 28 75 86 58 9c f2 41 41 da 7a bd a0 03 41 21 91 b0 60 1a 32 a1
+## [10011] 07 ef a8 d4 2f 88 5d ac 31 ed 9d 7a bd 18 ee 92 ad d4 33 55 68 71
+## [10033] 19 52 e5 d3 4f aa 34 6a 00 93 25 8f b7 69 75 76 fe 2a 4d 52 52 35
+## [10055] bc cb 7f 41 52 b4 44 0d fc 9b 21 ad ae 10 c6 8b cc 36 c8 31 fb c6
+## [10077] 2f 93 46 b3 de 60 b5 15 c2 19 6a 2a 43 a5 f1 19 4d 66 27 ef 85 27
+## [10099] b3 8b 0a cc 1e 8d 5a ea 70 d0 7a 43 c3 cc c7 72 09 0d 34 4d 16 25
+## [10121] fe 81 a6 44 ea b7 3b cd 86 0c 97 8b 56 6a 02 ce b1 ba f5 fc fb 30
+## [10143] a5 d2 97 45 f2 0b b2 32 69 17 ca 13 f3 0d a9 41 5b d3 12 f9 28 cf
+## [10165] 74 0c 11 1c 0f 77 43 a5 3d d4 2f 7a a8 60 8c e1 39 ab 7b cc e9 cc
+## [10187] cf 65 9c 4e 26 37 df e9 3c b0 d9 61 97 6b 83 4a 85 aa 38 ef d2 62
+## [10209] 7b 06 00 38 6c 1b 79 1b ad cc 65 5c 4e 26 2f df c1 00 30 8e e9 2a
+## [10231] 45 b6 75 3b bc 53 6b 0b e0 08 4a ed d2 94 3b 54 19 b2 44 68 1b 46
+## [10253] 10 bb 20 73 cc 2b d4 7b d4 e3 98 dd 6e c4 87 b4 ed cf 05 87 b9 38
+## [10275] 97 32 fe e8 9c 87 a4 1a bd 0d 4e bb ca b0 40 2e 57 aa 03 a7 ba 31
+## [10297] 44 ac 8b 2c 5f 5d 5f 3e e4 b0 2f e6 db 97 38 ec 80 06 d5 5e 51 c5
+## [10319] 45 18 57 03 df 62 97 67 5b d7 c3 74 ad cd 0b 40 02 a7 0a b9 30 48
+## [10341] c8 ef 6d 67 8b fd cb 5e e0 0b 96 a0 45 da ed 72 c6 b9 09 2e b4 2f
+## [10363] 88 42 c0 52 92 b8 d6 64 b1 81 1d b3 5f 29 5f 87 f6 78 89 30 13 6b
+## [10385] 89 7e 82 30 a7 83 6f 5a e9 ee 24 63 7a df 8d 08 2d 04 8f 70 d8 c8
+## [10407] dd c8 70 ee a4 71 45 25 c9 70 23 88 5e 18 1c 8d 0a 86 26 ba 51 14
+## [10429] 9f 89 a4 44 21 ac f1 4a 4f f7 ee 47 07 fa 61 75 e4 98 2f 90 e3 36
+## [10451] 07 43 66 75 61 70 aa ab 38 bc 7e fd f9 a6 9b 3a 56 1a f2 73 0c aa
+## [10473] 8b 3a 65 26 74 f7 9c b6 d5 3a 0b 83 d0 58 58 06 c4 fa 13 70 e9 89
+## [10495] cb 67 37 6c b0 59 5b 16 aa 8a 4c 39 e8 6c 5b 9f 2b f5 55 06 43 63
+## [10517] 1b bd 06 a8 58 70 a5 1d f7 5b 51 be 7a a1 59 4d a2 38 c8 0c 19 5d
+## [10539] 53 07 6f 38 97 2d 8d 4d 0e 0e ba 39 12 56 e6 ba 2a c2 db ba 37 c8
+## [10561] 8b 43 4e 46 ab 04 b0 07 4f 3d d8 dd 03 b0 a8 ae d9 c3 b9 17 55 a8
+## [10583] b2 74 ce 1c 6f 41 5e dc e0 0c ee e8 de b9 1d d6 87 1a 77 c7 36 0a
+## [10605] fa 7d 0f f5 eb a5 bb 89 6c bc c1 ed cf d7 e2 bc 5c e0 25 bb 29 32
+## [10627] 27 b0 35 f1 da 4e 9f 57 a5 0a 64 07 72 3d 30 4a 77 4b 81 92 4f 2f
+## [10649] 5d 66 34 4a ec 4e 69 76 76 27 f5 60 91 10 e5 b4 99 f6 1f e0 dc d6
+## [10671] d9 4f c9 0a c9 19 c1 a6 c1 c8 51 d2 74 9c 96 a5 03 b5 8e 4b a9 21
+## [10693] 9d 6a cc 46 52 fe 1a 09 1a 73 a3 27 db ca d9 4c 91 f2 8a c8 8e 1c
+## [10715] f3 30 ae 43 4b 2c 8b 18 e7 56 35 85 76 7a aa 29 71 75 99 6f b1 2e
+## [10737] d3 67 72 36 da 1d 83 e5 71 e4 8f a2 68 85 54 62 2c f7 b8 4f a2 d9
+## [10759] a8 3f 17 e2 a0 19 77 f7 12 ee 8e 24 d4 c8 03 b0 fa b0 0e 15 ad e3
+## [10781] 74 6c 84 6c e7 8d f0 f1 c2 9e d7 5f 7f 28 71 55 72 2c d1 4c dd 32
+## [10803] b3 f7 10 7f 01 da 0f 09 72 41 9e a9 4c 7a bb e0 85 49 bb e7 22 61
+## [10825] 5f 2a 1f 1a e6 65 20 d1 56 8c c2 a4 49 2f 0c 0c 72 ec 85 0b 90 df
+## [10847] f6 ab b5 8d 8b 2d 16 b7 c3 68 b2 eb 34 7a 03 bb cc a6 9d fe 02 18
+## [10869] e7 37 12 1f db 25 1e f7 28 39 55 ff 9d 91 6b 00 6e cf 02 b7 d5 96
+## [10891] 95 59 60 33 6a d5 d0 92 53 fb 69 7d 62 df 56 17 23 b7 23 17 37 21
+## [10913] ee d8 4e 6f 16 33 4f 68 1e 5a 73 a3 5a fc a5 c9 1b 11 8d f9 d3 29
+## [10935] 08 79 93 99 92 66 eb 4d 99 ed 43 a5 5d 9d 35 77 20 04 8b 76 bf ad
+## [10957] 51 aa 32 c9 d3 5d eb a0 a9 b9 6b 64 75 51 89 cb 3f 32 7c f7 c9 d5
+## [10979] 6d b0 d8 df d6 53 31 0c f7 7d 93 ff 64 4f 71 48 a7 7d bc bc bc a7
+## [11001] 7b 74 73 db 6d 68 72 b6 05 2d 2d 7b 86 cb cb 57 16 ac 93 9d e8 5a
+## [11023] b7 ba 7d 78 63 6b 51 59 4e 74 f3 e9 e7 8f 1d 47 f4 e1 c9 b5 5a 2d
+## [11045] c8 6d 3f ea fb 15 ea 09 a2 02 23 97 90 5c e6 9c c4 9f 72 9b b0 e9
+## [11067] 2b e0 12 9d 67 9e 44 05 63 e3 36 b3 a6 40 c3 e1 96 fc 3c ab ad 7a
+## [11089] 6c cf 82 0a 68 5d b1 bb a4 ae 26 23 2b 43 26 b3 c8 5c 06 77 f5 64
+## [11111] a3 3f 07 8e dc f2 66 47 e7 d1 ca a5 cb d4 2a b9 42 62 83 8a f1 aa
+## [11133] ad 90 1b a8 cf f5 fb 7c b5 75 8b 16 76 8d 35 35 81 de 40 4b 54 fc
+## [11155] f5 58 69 5f 5e 7e 79 57 53 e3 c4 a9 1d cd 2d 06 3d 80 4c ae 4a a2
+## [11177] 66 49 3b a2 e6 4c a2 08 95 9e f2 67 a3 2e 85 29 61 2e 94 45 58 49
+## [11199] 2a 0a 0b f0 37 e5 23 d4 f6 87 d7 1e aa 55 6b a3 ba 4c dd 5d 2b ef
+## [11221] 9d b9 30 29 06 32 f7 30 69 07 ea 8e 23 27 4f 7d c0 86 23 16 8f 7b
+## [11243] 6f e2 c7 d4 2f 7e d0 e8 05 95 26 37 f1 11 8d 02 85 9c 25 09 93 c2
+## [11265] eb 3e 40 ed d8 cc b9 e5 3e e8 8b 7f f7 75 74 58 12 f8 3b 27 9c 4e
+## [11287] b9 88 d4 bd b3 9f 50 d7 30 db 09 b8 67 5e fa 4a 69 3d 95 d3 92 e9
+## [11309] ce 3d 97 e8 e0 99 88 c1 8c f8 51 79 ed b2 5a a5 00 af d9 0b f6 90
+## [11331] c1 1c e0 ff 09 33 91 5c 29 cd 90 f1 3f f3 e5 d8 8a a8 33 2e a9 42
+## [11353] c9 ea d4 5a 7b 62 1a 7e ca 7a 38 83 5f 27 a7 30 31 65 3b fa 13 41
+## [11375] 83 34 03 54 8a 2c f2 ed 0e 36 4b ea 12 31 10 a2 b0 37 a9 07 45 39
+## [11397] 89 d0 4f 50 a3 2e c9 48 12 0a 0a dc 48 65 c8 4a 34 32 e7 df 62 3f
+## [11419] 54 81 c1 db 5b bf d0 eb 73 3a 3b a1 1e e1 4e 6b 99 d5 56 65 eb 10
+## [11441] 44 b1 38 ba a6 bb 63 e9 72 b7 b9 91 7a 30 71 60 71 60 19 14 58 f3
+## [11463] 49 cf 52 ab 85 66 13 b5 8b ac 36 ca ae 95 c9 f5 72 37 2d 91 9e 59
+## [11485] e9 af ac ae 3a 46 ca 56 d8 33 33 c4 ec 54 85 5e fa 2a dd 27 e8 31
+## [11507] 4a a4 70 40 da 1d 44 c4 8a 9c 00 2b 06 1d 8a ad 82 91 83 53 00 2b
+## [11529] 5a 47 6f 6f 2f ca cb 2b de b5 fd c8 b9 c1 7e 80 b1 ad fc ad f0 ea
+## [11551] 06 bf 2f 64 1b 9d f9 ad 19 f6 3c f5 c4 f9 fb 96 2f 85 be b2 ad f2
+## [11573] 0f d6 75 c0 e6 2d a7 be 7b e2 24 bf d7 6c ea 44 53 c2 55 6b 67 af
+## [11595] 53 fb e9 fd 44 64 9e 57 66 7a 7d a2 05 0b 0b eb d9 1b 61 8e 15 bc
+## [11617] d1 6c ba 91 c3 a3 18 45 4e 96 af 5f 17 de b6 a6 1d f8 4f 4e de 62
+## [11639] 96 c8 64 88 f0 c8 5f c2 45 97 3e d3 91 b9 9c d6 65 19 f9 9b db 1f
+## [11661] 59 b6 b7 bd d1 e7 fd ce 83 7f d8 58 19 07 30 1b bf 5f 5b b7 a9 ef
+## [11683] 7e a0 c6 6b 48 90 cb 64 12 29 fc 5a a9 70 69 ae 28 80 ba e4 b0 e4
+## [11705] b6 35 76 dc d4 fb ce 7d f7 03 18 5c ad 4e b3 09 45 43 bc 3b fb 7b
+## [11727] 4c e3 3f 43 34 c1 10 41 82 f0 a6 91 60 aa d0 f3 9a 6e 80 7a b1 8d
+## [11749] 4d 83 b7 14 5c 94 d9 59 36 58 c4 72 00 1c 5b 54 c8 b1 33 ef e5 09
+## [11771] b0 90 2b 0c ba 85 36 77 30 b1 06 5b 53 63 58 b6 13 31 a1 30 b2 88
+## [11793] 73 bb b9 c5 98 d3 c3 c9 76 01 4c ba 3d 85 37 7a 85 d8 ac 43 fb 7e
+## [11815] 82 de 90 44 8e 5e 94 18 5a 0b c9 49 29 31 f5 ea 93 ca 23 bd c8 99
+## [11837] 9e 44 57 fc e8 78 59 94 ad 39 77 be 86 05 ae f6 e2 07 07 fa 00 aa
+## [11859] 26 f9 df bc b8 ff 76 80 ae 3d de 33 a7 21 f4 c7 e3 a0 01 fe e3 fb
+## [11881] ff f0 de 6d 3c 5d f1 87 1f 27 5e be c4 5f 86 a7 9e 83 25 40 fe 6d
+## [11903] 02 f5 66 9e fd 90 7e 0c bd 9d 4b c7 f4 14 0c 04 dd 0d 90 68 d4 71
+## [11925] 90 0a e5 e6 fd 1e 8f bd c0 c5 d4 40 0f 65 84 62 f7 18 fc 76 d2 ef
+## [11947] e7 66 b6 43 c8 35 c6 bb bc ea 82 bc 47 a8 c3 6c 89 46 45 fa 66 7c
+## [11969] e4 c5 73 61 46 e9 f3 a9 0a 0a 4f 4f ff 54 d2 3b f3 ee 63 61 56 25
+## [11991] 7a 32 ae 87 be 73 42 c4 ad c6 54 f1 68 2e 4d c5 c6 94 1f cb c0 94
+## [12013] 4c bc 22 67 be 14 5a 11 4c c8 7c a3 a8 88 ea a9 a4 97 ff d2 6f cd
+## [12035] 8e 64 e7 2f 70 16 1b 4d 5e 58 58 92 97 9f 7d 01 32 c2 1e 77 11 df
+## [12057] eb 30 e9 b4 e0 cd f2 e8 58 ce 74 c6 21 43 e8 a7 d3 44 f8 b7 4a 6d
+## [12079] d6 fc eb 57 2b 8c e6 25 d4 09 3b 99 a1 74 18 d6 16 2d 6c 2d 5a 62
+## [12101] b6 2a e4 94 dd 4e 9b 2c fe 3f f3 63 2b 4c 16 c4 56 24 a8 55 59 fa
+## [12123] 3a 57 59 76 b0 88 9b 2e d0 6a 15 06 5a 2a b3 db 15 59 99 35 b0 0a
+## [12145] b8 35 3a 6d d2 ff bc 22 5a dd 2b a0 87 b9 ca 88 4b a1 c3 79 98 30
+## [12167] 77 3d cb 82 c2 50 a5 c9 d4 59 6f 7d 1e e1 9f d3 d1 c3 23 84 73 d8
+## [12189] 57 51 af d7 d9 72 29 4a ca 7a 2a a5 32 fd f4 ca b5 56 1b 5a 2c 49
+## [12211] 04 31 de 7c 8a f9 37 42 34 88 c8 04 61 ee 1c f2 4c e1 05 b3 88 d2
+## [12233] 44 58 21 84 23 14 a3 cc 9f 0e 3d 82 35 eb 4d f3 f0 aa 10 3d e1 83
+## [12255] a6 6a bf 4f ad 09 ab e4 72 57 5b 41 41 3e a7 f5 49 49 52 40 55 ba
+## [12277] cc c5 0a 95 42 25 bd e3 3b b2 f2 40 73 cf 79 e1 38 e0 c0 be b7 97
+## [12299] 07 83 8b 1b eb f6 35 34 42 cb 12 ea 09 70 19 bd 50 5d 85 13 01 49
+## [12321] b2 46 a5 46 ad 92 68 c9 c1 f2 ca ea 05 33 7f bf d0 6a 13 5a c9 60
+## [12343] 85 7c 4f b5 b5 e0 96 a9 c7 ff f1 db a7 66 ce 41 51 61 0e 5c 9c 2a
+## [12365] 2d 81 d1 ad 0f 9f d9 b7 4f 90 da 2f f8 b7 e1 73 e2 1a 61 4d 7a a4
+## [12387] 18 ad 04 5b e0 64 69 a0 89 b2 83 cf 97 34 af d2 f7 f8 3c 72 b9 a2
+## [12409] 3e cf cd 39 ec f5 35 a1 62 63 7c 6d 87 37 50 5a 53 93 ab a6 25 32
+## [12431] c4 f4 91 80 cf 0b c5 21 c1 ba 31 97 bd 84 d6 1d 9c 8f d4 23 6c 32
+## [12453] d3 b2 a2 69 8b 71 29 2c a2 2e 3f 3b 77 2e 11 a6 58 f3 98 e0 c5 e3
+## [12475] 92 5a 59 89 ad 24 f2 14 ff 51 81 42 09 15 53 5e ce 1c 0c 9a 3d 9e
+## [12497] 29 fe 45 bf f7 47 d7 7a 37 b6 96 af 9f be e8 c5 aa 73 82 ba 7b 88
+## [12519] 63 33 7c fc 2f 0f e7 04 10 f0 05 f8 a8 df bf 83 f7 6d 0f 78 81 a7
+## [12541] ab f1 e9 a2 fc bf e6 1f 4d 55 10 d2 12 ea 31 e2 a6 f9 7c cd af 5f
+## [12563] 6e d4 10 e6 f4 89 c3 57 50 e8 bc 5a e2 6b 0b 0c 76 b9 2d a0 37 14
+## [12585] 18 15 2a 75 93 ff a6 0e a9 84 84 de a6 c6 65 9b aa 5d a6 25 65 dd
+## [12607] 7d a7 a3 2e c6 b9 8a af 5a e3 c8 36 fa b6 d4 d5 fa 22 0e 7b 17 1f
+## [12629] e9 ce c6 e2 5a ef de 5c bd a0 a2 20 db da c9 97 db a4 06 7b 07 49
+## [12651] 2f b1 98 84 72 48 c2 59 54 9c 1b 24 52 f5 e1 4e ce dd e0 af 6d f1
+## [12673] 54 01 4c 35 9f e6 63 8d d6 6c 99 cd 2e b3 67 af 82 4b 1b 8a da f2
+## [12695] 6c a5 3c b1 32 37 97 b2 d9 94 1c 7b 2b 58 4e 56 c4 30 4c 46 12 ef
+## [12717] 2c c3 02 d3 96 d2 4e 0c b5 93 97 94 42 f4 7f a2 1d 21 06 ed 72 da
+## [12739] 41 d0 4c bd ac dc b8 a0 e2 3c ff 61 ae 42 05 81 79 9a 79 8b 73 4f
+## [12761] 24 5e f0 aa 19 e7 ad d4 8e 94 4e ee 42 9b f8 0b 9d d4 0a 90 52 8c
+## [12783] 46 9a 94 9d e8 91 13 60 45 c4 a5 67 8d c0 a6 4c 41 43 4d f1 81 a7
+## [12805] 9a 0b ad 91 1c 49 f9 cc 61 52 f3 e4 aa 70 4e 30 34 bd cb 2c f9 1d
+## [12827] 74 44 a6 a0 db 3c 6d 83 35 a5 77 f3 df 4a 69 97 dc 8f b3 99 bf 6c
+## [12849] 75 22 60 49 c5 51 76 af cf eb f5 ed 25 bb 6f f6 fa 84 b3 aa 9b 13
+## [12871] 0f 7b d1 f5 77 50 77 8f b9 5d 32 9f 4f e6 72 8f cd 6c dd 61 77 08
+## [12893] fc 49 92 67 6d 34 4d a8 88 26 b4 99 c1 ff bf f3 b6 08 cc 3b 20 12
+## [12915] cd 8d 4d 13 a9 8e ff eb 89 dc 25 b0 3b f3 72 9d f8 c9 cd 43 bd 25
+## [12937] be e3 b4 e7 09 84 d0 9c 67 77 fe df 4f ec d6 53 6f 25 a7 ff ca b7
+## [12959] 90 51 65 98 51 9f a5 27 08 07 51 88 08 3c 92 74 26 dd bc ca c0 9f
+## [12981] 06 65 1c a4 90 78 24 e5 5c 46 d9 d6 ae 4e 4c 15 d6 c8 ba 5d f7 62
+## [13003] 1d 7b f8 f0 db 63 9b b7 64 ea ca 81 90 2f 5e 14 c1 ea a1 a6 e6 ae
+## [13025] a6 fa 45 92 7f 73 5b 59 17 48 a5 89 87 8a f2 5b f6 de fc e2 1b 27
+## [13047] be 05 f9 79 05 12 b6 dc 66 99 be 3f 62 34 0f 0e de 7f df 81 7d 79
+## [13069] f9 f5 02 fe 10 51 a3 64 1a 51 63 2d d1 fa bf 47 8e de ff 4e 61 ff
+## [13091] 53 68 c9 fe d7 8a f9 df 42 cf 3f ff 67 4a 00 e2 57 b3 bf 87 e7 89
+## [13113] 57 11 d5 10 b4 f4 c6 91 ba b0 47 58 1e c4 34 28 00 29 b7 70 80 66
+## [13135] 49 91 ac bb 10 51 92 78 86 3f 3b 4b df 2c 56 23 88 f9 bd 29 51 e9
+## [13157] 32 fd 3e 56 48 60 30 cf bd 24 66 89 2e 29 35 a9 9f 85 ef 82 cd b2
+## [13179] ec b3 07 fe f9 27 8f f1 1f 2f b6 d8 80 df 3b ca e1 bc e3 64 00 4c
+## [13201] 2f 40 17 54 d5 ec 5b d9 fe e0 fb 89 97 1e 0c 65 ea a0 e7 1e d8 08
+## [13223] 15 0f dd a6 d5 86 a7 b7 27 43 f9 18 e3 c2 22 64 dd a3 7c c7 c9 23
+## [13245] 77 74 57 ba 2a 00 77 52 82 0a 5c 8b a8 45 2f a0 96 39 10 1d 01 56
+## [13267] 3c fd 8f 52 55 89 37 21 fb 5e ac ed 38 fb cc 17 24 c7 ff 69 88 65
+## [13289] d5 9c 84 3a 61 99 b9 ea f3 1e 97 f1 1f 9b a9 7a af 6f f3 1f 45 e4
+## [13311] 75 9d 7a 9e de 85 1e 9d 8e 7e 37 f0 b9 08 90 d3 2e 9a 12 97 f8 ba
+## [13333] 21 6d 9f fe f9 87 04 e9 74 ae 63 cd 0d 66 37 14 ac fc dd c9 38 62
+## [13355] c1 bd 8b 56 3f bc fc 10 20 56 ff 66 3b 56 8c 36 4b 8e d7 6a 92 48
+## [13377] 40 ad f0 b5 39 33 97 b4 dc 83 99 41 a9 b0 b6 15 b6 41 76 f1 b6 f5
+## [13399] 81 1c e0 df 74 d2 06 7b 27 f9 f9 e5 4d 3f c0 9a e0 9e 93 dd 11 53
+## [13421] 4e 65 fc c7 7f 35 31 09 39 81 e6 80 c3 6e b2 78 0b 1c 5a dd 64 cd
+## [13443] d6 97 7a 63 12 f4 c5 ac 4c 99 44 22 e7 6a 4e 76 2c d9 0f 0d 8d db
+## [13465] a6 9f 13 22 a0 04 e5 34 4b 6f 25 16 ce 3f 41 77 7f 29 bf e9 bc 7f
+## [13487] 89 f6 cc f3 d0 9e 58 b5 40 2a e0 4b 7a 18 a7 c5 52 60 50 6b 33 3b
+## [13509] fb 9b f2 32 a4 58 2d 1a 9d 4a 85 c9 bc 00 ce 6c ad 5f f4 a3 8a 2b
+## [13531] 47 9b 9a 56 f2 f5 5c a6 56 0d c2 b9 18 ff d3 b0 a3 99 67 ed 52 9b
+## [13553] 75 15 f5 51 03 16 b7 24 d8 2d d9 16 2d 66 30 f9 cc f7 ff 64 d3 65
+## [13575] aa 4c 32 29 62 bc 0c 8f ef 89 d2 cf ae 54 54 4b 6d 08 f1 a4 52 8d
+## [13597] 42 29 57 c1 b7 f8 a3 0d 42 e4 11 2c 50 ce 2f a4 5e c0 0a 3e 93 a8
+## [13619] 46 0b 9c 57 c2 73 5f b2 c0 b9 ed 09 aa 4a bf 1d 30 a6 2b d1 d4 4e
+## [13641] a0 d1 1a 09 35 0e 2d 5b ba a2 75 b0 b9 aa 1a f8 17 ba 6d d6 2c 43
+## [13663] 48 29 57 ea 7a 24 2f a2 72 60 61 a8 b3 e7 f6 78 2f 6c df f9 37 e5
+## [13685] 81 ba 08 cb 8e f2 ba 67 16 61 c9 30 b4 f9 47 df ef 5a 57 50 94 37
+## [13707] 7d 99 e6 d8 66 ea 6a 8b d9 28 a0 2b 17 2c 92 d0 d2 c3 0b 99 28 4c
+## [13729] ee 78 f5 e5 47 ce 82 c6 58 c6 5f d9 64 b2 c8 b8 14 1e a5 cf a3 07
+## [13751] 2d f8 6a 36 32 ea d2 e7 25 e9 ca 39 8d b8 d3 ba 81 b9 d3 ca bd 2e
+## [13773] 27 cb 4d 92 4d bb dc dc b3 3b 7f 0e 1e df 42 d2 d2 1b 2d ef e3 f7
+## [13795] c0 3b 87 82 c1 f5 89 a3 ed 4e a7 de 90 cb ef 5d 2c 64 df 67 bd 0a
+## [13817] 8e 3d 48 ed 18 65 d1 8d 7c 52 37 37 cc 77 9d 1e 7f ad 22 a0 51 fb
+## [13839] 58 a5 dd 19 e3 0f 26 12 c7 dc 38 ca 4b 29 e5 4c 26 c2 74 38 5f c1
+## [13861] 1f 1d 77 0a 29 19 08 3b 5f 43 bd 8a 9e 86 5c eb d9 2f 97 fa c9 e3
+## [13883] 93 f9 b5 7e aa 32 13 bc 24 9a 3e d8 14 6b 7f 3b 3c 1a b2 08 99 4a
+## [13905] f3 d1 0f c9 0c 69 56 96 dd 05 fa 5c bd 51 cb bf b8 aa b9 65 5b 59
+## [13927] 71 08 b3 0b a6 f5 90 39 5a 53 05 14 25 e1 af 72 96 ec 62 ea 84 8b
+## [13949] 94 69 bc 5a 75 a6 3d f1 05 a9 94 39 b2 95 56 b5 8a 24 5d 2e a9 c9
+## [13971] 12 98 79 ee ad d8 46 00 47 76 75 c0 66 d5 1b 00 0e 4e e5 67 68 54
+## [13993] 4a f2 f2 12 ab 29 03 2d 06 cd 86 fe 2e dd 8b 94 00 2e 28 0a c4 b4
+## [14015] 03 e1 79 c2 4d be 5f 64 d3 fb 32 52 c7 3f fd 88 ef 5d 9e e3 df 00
+## [14037] 17 02 c0 87 18 67 53 e2 cf 9d 36 2b 28 94 ba f6 c4 87 ad 5a 1d e4
+## [14059] 5a 97 90 1a b2 24 f1 5a e2 8f 5e 79 38 f4 1e f5 e9 f4 8e 89 6c 04
+## [14081] 08 5e 99 5a 51 a8 f5 79 f3 5e fc 69 1e ee 45 af 92 7a 53 e7 7c 74
+## [14103] 05 ea 5d 25 a0 5f 48 57 50 42 5e 9b 7f 86 93 3e 1f 4b f1 36 a7 6f
+## [14125] 38 f1 f6 86 47 e0 9e e5 df 58 ab 37 f0 07 b6 27 8f a3 47 c9 e8 5f
+## [14147] ef f8 27 e8 8d 9f 87 47 31 c8 55 f3 4f f3 96 71 41 db 2f 91 cf ca
+## [14169] fc f5 57 9e ac 73 83 4a 53 30 3d aa f0 b8 bf 41 ed d8 c2 b1 72 5f
+## [14191] c1 9a f7 4e b6 ad b2 26 be 08 9a cc b4 97 dc 4e f3 c3 69 1d af e7
+## [14213] ef 25 47 e9 01 42 87 3a 26 f5 c9 97 55 7a d2 9c 65 96 f9 fc 64 37
+## [14235] bc be ff 92 fe cc e2 dd 00 45 2b 7f 63 db 7b f4 53 2c 4a ba 40 76
+## [14257] ba 97 3d b0 eb 0d fe 61 7e e6 1c ff d6 bd ec 82 8b e0 10 ac 1c 4b
+## [14279] 2f c9 33 b8 db 6c c1 5e 92 08 92 9b f7 ea 29 aa 4b be a0 0d 48 0e
+## [14301] 29 8b 3d d1 b2 27 c7 45 d0 75 61 8a 71 c1 f8 f9 aa 6a 57 88 6e e1
+## [14323] cf 3e 12 2e 9e fe 50 04 5d 5e 05 cb dc 2a 21 8a 43 67 31 63 a3 1b
+## [14345] 49 9e 15 73 50 21 51 29 c4 80 b4 ff 63 78 16 c4 45 cf 73 ab 94 d3
+## [14367] cb d2 67 a2 98 1c d2 26 2b 3a 1c 19 fb f6 96 cd 7b 6f 7e be 48 a5
+## [14389] b1 3a 1d 7c 70 8f cf e3 f1 ed 21 ab ff f5 f8 31 e8 2b 1f bf 33 de
+## [14411] f7 eb c9 0b 89 3e b2 a3 7f d1 d4 37 57 9d ab d3 68 9b b1 bc ba f8
+## [14433] bd 9a 1a 20 79 32 a2 d5 79 64 8c 73 22 05 13 57 b4 5e 3d de 9c 9f
+## [14455] cd 2d 5f 79 f4 b3 ce 22 2f f9 32 30 95 0f 3c 8d 4a 40 b3 29 e6 43
+## [14477] 82 5c c4 eb 4f f9 67 f3 7a b4 95 ff 2a bc fc ff ea 87 af 91 d9 e9
+## [14499] fd 38 4e 3a d7 84 cf 24 df ad cb 84 77 f7 84 cc 2e ce 34 ff 13 a1
+## [14521] ff 8e 60 24 e3 c4 6a ea 4e 22 80 57 33 79 9e c8 c0 df 42 0c fd 59
+## [14543] 64 19 71 16 7f 4b 70 4c 2e d2 01 a4 19 bc 4a 49 42 00 b3 c4 bb d8
+## [14565] 66 c1 5f 13 3e 23 f4 75 50 76 62 00 e7 12 c6 78 84 e7 f1 aa c4 ab
+## [14587] 16 b9 7d 57 b8 c7 79 4c f8 eb c6 e7 84 fe 20 ce f3 73 c9 bb 84 49
+## [14609] 5a 26 f2 60 42 5a 83 73 31 02 1f d8 2f 15 79 20 88 b7 05 1e b1 ad
+## [14631] 44 58 0b 2f 09 5e 19 d8 26 cc 61 c7 5f 27 bd 46 e4 a1 1b 9f b7 23
+## [14653] ed 46 f6 0c c4 36 02 21 2b 0c c3 e3 a4 8c ac 24 c7 c9 f7 a9 7c ea
+## [14675] 16 89 1d ff 35 4b ee 90 3c 26 f9 98 5e 48 3f 40 5f 97 06 a5 7b a4
+## [14697] 4f cb 94 b2 9b 64 c7 65 3f cb a8 c8 18 c8 f8 b9 1c e4 cb e4 d7 14
+## [14719] 46 45 a5 22 ae 24 95 2d ca 9f 28 df 55 e5 a8 56 a8 9e 55 73 ea 83
+## [14741] ea 5f 6b 2a 35 fb 35 d7 34 9f 6b 3d da 29 51 a2 11 62 b3 20 90 a4
+## [14763] c4 bf f2 e1 e0 fc 5c fb c8 dc 18 20 68 bc 4b d2 88 6f 91 df 24 4d
+## [14785] 61 dd b1 3b 45 4b 08 25 f1 40 8a a6 51 e9 8f a6 68 29 b6 3f 9e a2
+## [14807] 65 68 cd 57 92 34 7e 59 88 df a7 68 c0 88 31 9b a2 31 fb 81 32 45
+## [14829] 53 44 26 18 52 16 25 23 f2 c0 23 d2 02 07 65 b0 42 a4 85 ff 67 91
+## [14851] 0f 87 45 5a 82 74 29 3c 25 d2 34 d2 21 b8 2e d2 52 61 0c 99 2d d2
+## [14873] 32 e1 59 b2 11 9f 03 54 0d 49 48 c9 fd 22 2d 45 5a 43 1e 12 69 19
+## [14895] d2 2a f2 5e 91 96 8b ed 0f 89 b4 12 e9 4c f2 a2 48 ab c4 31 cf 8a
+## [14917] 74 a6 d8 fe 8a 48 eb 90 56 90 ff 28 d2 59 e2 fc ef 89 b4 5e 1c 73
+## [14939] 5d a4 0d e2 b3 5f 88 b4 49 a0 29 5a a4 ad c2 5a 94 4e a4 1d 62 bb
+## [14961] 4b a0 33 44 3e a9 3c 81 56 29 c4 f6 e2 73 4c 71 79 79 b0 a0 bc 9c
+## [14983] a9 1b 1b 1b 8a 33 f5 a3 c3 63 93 13 f1 71 66 c9 48 6f 21 23 f4 96
+## [15005] 15 33 4b 07 47 46 27 76 8d c5 99 ba 46 86 49 3f 51 cc ac 16 9a 56
+## [15027] 8d 0e 4d 4e 0c 8e 8e 6c bb f1 44 aa 77 20 ce 34 8c 8e 4c 30 0b 27
+## [15049] c7 e3 b1 49 b1 7b f5 e0 70 7c 5b 5b bc 7f 72 28 36 2e d2 4c db e8
+## [15071] 70 6c a4 82 29 2e 29 0c f6 15 c7 4b 2a 98 50 b0 b8 ac 20 18 2e 28
+## [15093] 2e 9d 37 20 dd 2d 36 15 88 4d c9 de c1 6d 4c 8c 19 8f f7 0f 6e 43
+## [15115] 9e e3 7d cc c4 78 ac 2f 3e 1c 1b df c2 8c 6e 9a cf 76 dd d0 90 c0
+## [15137] ee 68 ff 78 6c 6c 60 b0 97 69 88 c7 26 90 ad 6d 42 7b 9a 5e 3a d8
+## [15159] 9f 24 50 06 c3 a3 23 cc dc 7d 72 a9 f8 b6 09 66 72 24 ce e0 ec 5b
+## [15181] 27 e3 4c df d1 b1 d1 6d 47 f1 37 3e 7f 9d 34 57 13 4c 7c 70 44 b8
+## [15203] fa e3 c8 52 7f 7c 04 5b d7 c6 c6 e3 23 bb e3 83 bd 03 f1 11 7c 6c
+## [15225] fc ab cf dd 8d 0b 08 f3 f7 0e 0c 8e a6 76 35 1e 9b 18 65 fa 06 bf
+## [15247] 6e 0d 26 8e f3 f4 c7 53 e3 e2 f1 f1 3e 66 20 36 d2 17 1f da 36 1c
+## [15269] 47 01 6c 8f 8d 7c f5 a9 23 e3 4c 7c 62 22 3d 77 1c 67 c7 71 e3 93
+## [15291] c3 47 c6 b7 c4 99 4d a7 be 86 27 fc 9b 1c 89 89 5c c5 e6 78 ea 8b
+## [15313] 7d ed be e3 c2 ec 37 26 8f 8b 93 c7 87 9f 13 26 9f 18 1c 1a 78 1e
+## [15335] 05 f0 e5 e7 36 5b 47 be 79 ea 0d 62 05 31 4e f4 11 83 18 1a 7e 87
+## [15357] d4 72 62 14 bf 87 89 18 31 44 b4 11 71 a2 9f 98 44 2a f6 a5 1e a1
+## [15379] 6f f0 6b 46 8e a6 46 c6 83 9f 04 1f 0f 7e 10 bc 1e 9c 79 69 ef 0f
+## [15401] 2d af 5d 9e 37 d3 20 52 5f 5e 65 1e 2d 71 4a 8a 25 2d 92 46 49 15
+## [15423] 7e 97 cf ef e9 2e bb fd 27 2b 56 7d e9 b9 ff 00 58 5d f5 1f 65 6e
+## [15445] 64 73 74 72 65 61 6d 0a 65 6e 64 6f 62 6a 0a 32 35 20 30 20 6f 62
+## [15467] 6a 0a 36 37 34 36 0a 65 6e 64 6f 62 6a 0a 32 33 20 30 20 6f 62 6a
+## [15489] 0a 3c 3c 20 2f 54 79 70 65 20 2f 46 6f 6e 74 0a 2f 53 75 62 74 79
+## [15511] 70 65 20 2f 43 49 44 46 6f 6e 74 54 79 70 65 32 0a 2f 42 61 73 65
+## [15533] 46 6f 6e 74 20 2f 54 69 6d 65 73 2d 52 6f 6d 61 6e 0a 2f 43 49 44
+## [15555] 53 79 73 74 65 6d 49 6e 66 6f 20 3c 3c 20 2f 52 65 67 69 73 74 72
+## [15577] 79 20 28 41 64 6f 62 65 29 20 2f 4f 72 64 65 72 69 6e 67 20 28 49
+## [15599] 64 65 6e 74 69 74 79 29 20 2f 53 75 70 70 6c 65 6d 65 6e 74 20 30
+## [15621] 20 3e 3e 0a 2f 46 6f 6e 74 44 65 73 63 72 69 70 74 6f 72 20 32 31
+## [15643] 20 30 20 52 0a 2f 43 49 44 54 6f 47 49 44 4d 61 70 20 2f 49 64 65
+## [15665] 6e 74 69 74 79 0a 2f 57 20 5b 30 20 5b 37 31 36 20 35 35 31 20 34
+## [15687] 34 30 20 34 34 30 20 33 33 30 20 34 34 30 20 34 39 36 20 32 37 35
+## [15709] 20 34 39 36 20 37 31 36 20 32 37 35 20 34 39 36 20 34 39 36 20 32
+## [15731] 34 38 20 34 39 36 20 32 37 35 20 34 39 36 20 33 33 30 20 34 39 36
+## [15753] 20 33 38 36 20 35 35 31 20 34 39 36 20 34 39 36 20 34 39 36 20 34
+## [15775] 39 36 20 39 39 32 20 34 39 36 20 37 31 36 20 34 39 36 20 32 37 35
+## [15797] 20 34 39 36 20 32 34 38 20 36 30 35 20 37 37 31 20 35 35 31 20 36
+## [15819] 30 35 20 33 33 30 20 34 34 30 20 34 39 36 20 34 39 36 20 32 34 38
+## [15841] 20 37 31 36 20 34 34 30 20 34 39 36 20 34 39 36 20 34 39 36 20 37
+## [15863] 31 36 20 34 39 36 20 37 31 36 20 36 36 32 20 33 33 30 20 36 30 35
+## [15885] 20 36 36 32 20 5d 0a 5d 0a 3e 3e 0a 65 6e 64 6f 62 6a 0a 32 34 20
+## [15907] 30 20 6f 62 6a 0a 3c 3c 20 2f 4c 65 6e 67 74 68 20 37 32 38 20 3e
+## [15929] 3e 0a 73 74 72 65 61 6d 0a 2f 43 49 44 49 6e 69 74 20 2f 50 72 6f
+## [15951] 63 53 65 74 20 66 69 6e 64 72 65 73 6f 75 72 63 65 20 62 65 67 69
+## [15973] 6e 0a 31 32 20 64 69 63 74 20 62 65 67 69 6e 0a 62 65 67 69 6e 63
+## [15995] 6d 61 70 0a 2f 43 49 44 53 79 73 74 65 6d 49 6e 66 6f 20 3c 3c 20
+## [16017] 2f 52 65 67 69 73 74 72 79 20 28 41 64 6f 62 65 29 20 2f 4f 72 64
+## [16039] 65 72 69 6e 67 20 28 55 43 53 29 20 2f 53 75 70 70 6c 65 6d 65 6e
+## [16061] 74 20 30 20 3e 3e 20 64 65 66 0a 2f 43 4d 61 70 4e 61 6d 65 20 2f
+## [16083] 41 64 6f 62 65 2d 49 64 65 6e 74 69 74 79 2d 55 43 53 20 64 65 66
+## [16105] 0a 2f 43 4d 61 70 54 79 70 65 20 32 20 64 65 66 0a 31 20 62 65 67
+## [16127] 69 6e 63 6f 64 65 73 70 61 63 65 72 61 6e 67 65 0a 3c 30 30 30 30
+## [16149] 3e 20 3c 46 46 46 46 3e 0a 65 6e 64 63 6f 64 65 73 70 61 63 65 72
+## [16171] 61 6e 67 65 0a 32 20 62 65 67 69 6e 62 66 72 61 6e 67 65 0a 3c 30
+## [16193] 30 30 30 3e 20 3c 30 30 30 30 3e 20 3c 30 30 30 30 3e 0a 3c 30 30
+## [16215] 30 31 3e 20 3c 30 30 33 34 3e 20 5b 3c 30 30 35 33 3e 20 3c 30 30
+## [16237] 36 35 3e 20 3c 30 30 36 31 3e 20 3c 30 30 37 32 3e 20 3c 30 30 36
+## [16259] 33 3e 20 3c 30 30 36 38 3e 20 3c 30 30 33 41 3e 20 3c 30 30 36 46
+## [16281] 3e 20 3c 30 30 37 37 3e 20 3c 30 30 36 39 3e 20 3c 30 30 36 45 3e
+## [16303] 20 3c 30 30 36 37 3e 20 3c 30 30 32 30 3e 20 3c 30 30 33 31 3e 20
+## [16325] 3c 30 30 37 34 3e 20 3c 30 30 33 34 3e 20 3c 30 30 36 36 3e 20 3c
+## [16347] 30 30 33 33 3e 20 3c 30 30 37 33 3e 20 3c 30 30 35 30 3e 20 3c 30
+## [16369] 30 37 36 3e 20 3c 30 30 37 35 3e 20 3c 30 30 33 32 3e 20 3c 30 30
+## [16391] 33 35 3e 20 3c 32 30 32 36 3e 20 3c 30 30 33 30 3e 20 3c 30 30 34
+## [16413] 45 3e 20 3c 30 30 37 38 3e 20 3c 30 30 36 43 3e 20 3c 30 30 36 34
+## [16435] 3e 20 3c 30 30 32 43 3e 20 3c 30 30 34 35 3e 20 3c 30 30 36 44 3e
+## [16457] 20 3c 30 30 34 36 3e 20 3c 30 30 35 41 3e 20 3c 30 30 34 39 3e 20
+## [16479] 3c 30 30 45 34 3e 20 3c 30 30 36 32 3e 20 3c 30 30 46 43 3e 20 3c
+## [16501] 30 30 32 45 3e 20 3c 30 30 34 34 3e 20 3c 30 30 37 41 3e 20 3c 30
+## [16523] 30 44 46 3e 20 3c 30 30 36 42 3e 20 3c 30 30 37 30 3e 20 3c 30 30
+## [16545] 34 42 3e 20 3c 30 30 37 39 3e 20 3c 30 30 34 31 3e 20 3c 30 30 35
+## [16567] 32 3e 20 3c 30 30 32 38 3e 20 3c 30 30 35 34 3e 20 3c 30 30 34 32
+## [16589] 3e 20 5d 0a 65 6e 64 62 66 72 61 6e 67 65 0a 65 6e 64 63 6d 61 70
+## [16611] 0a 43 4d 61 70 4e 61 6d 65 20 63 75 72 72 65 6e 74 64 69 63 74 20
+## [16633] 2f 43 4d 61 70 20 64 65 66 69 6e 65 72 65 73 6f 75 72 63 65 20 70
+## [16655] 6f 70 0a 65 6e 64 0a 65 6e 64 0a 65 6e 64 73 74 72 65 61 6d 0a 65
+## [16677] 6e 64 6f 62 6a 0a 31 31 20 30 20 6f 62 6a 0a 3c 3c 20 2f 54 79 70
+## [16699] 65 20 2f 46 6f 6e 74 0a 2f 53 75 62 74 79 70 65 20 2f 54 79 70 65
+## [16721] 30 0a 2f 42 61 73 65 46 6f 6e 74 20 2f 54 69 6d 65 73 2d 52 6f 6d
+## [16743] 61 6e 0a 2f 45 6e 63 6f 64 69 6e 67 20 2f 49 64 65 6e 74 69 74 79
+## [16765] 2d 48 0a 2f 44 65 73 63 65 6e 64 61 6e 74 46 6f 6e 74 73 20 5b 32
+## [16787] 33 20 30 20 52 5d 0a 2f 54 6f 55 6e 69 63 6f 64 65 20 32 34 20 30
+## [16809] 20 52 3e 3e 0a 65 6e 64 6f 62 6a 0a 33 20 30 20 6f 62 6a 0a 3c 3c
+## [16831] 0a 2f 54 79 70 65 20 2f 50 61 67 65 73 0a 2f 4b 69 64 73 20 0a 5b
+## [16853] 0a 36 20 30 20 52 0a 5d 0a 2f 43 6f 75 6e 74 20 31 0a 2f 50 72 6f
+## [16875] 63 53 65 74 20 5b 2f 50 44 46 20 2f 54 65 78 74 20 2f 49 6d 61 67
+## [16897] 65 42 20 2f 49 6d 61 67 65 43 5d 0a 3e 3e 0a 65 6e 64 6f 62 6a 0a
+## [16919] 78 72 65 66 0a 30 20 32 36 0a 30 30 30 30 30 30 30 30 30 30 20 36
+## [16941] 35 35 33 35 20 66 20 0a 30 30 30 30 30 30 30 30 30 39 20 30 30 30
+## [16963] 30 30 20 6e 20 0a 30 30 30 30 30 30 30 31 32 30 20 30 30 30 30 30
+## [16985] 20 6e 20 0a 30 30 30 30 30 31 36 38 32 30 20 30 30 30 30 30 20 6e
+## [17007] 20 0a 30 30 30 30 30 30 30 31 36 39 20 30 30 30 30 30 20 6e 20 0a
+## [17029] 30 30 30 30 30 30 30 32 36 34 20 30 30 30 30 30 20 6e 20 0a 30 30
+## [17051] 30 30 30 30 33 33 33 31 20 30 30 30 30 30 20 6e 20 0a 30 30 30 30
+## [17073] 30 30 30 33 30 31 20 30 30 30 30 30 20 6e 20 0a 30 30 30 30 30 30
+## [17095] 30 35 38 36 20 30 30 30 30 30 20 6e 20 0a 30 30 30 30 30 30 30 36
+## [17117] 30 35 20 30 30 30 30 30 20 6e 20 0a 30 30 30 30 30 30 31 37 32 35
+## [17139] 20 30 30 30 30 30 20 6e 20 0a 30 30 30 30 30 31 36 36 38 32 20 30
+## [17161] 30 30 30 30 20 6e 20 0a 30 30 30 30 30 30 31 37 34 35 20 30 30 30
+## [17183] 30 30 20 6e 20 0a 30 30 30 30 30 30 32 35 36 34 20 30 30 30 30 30
+## [17205] 20 6e 20 0a 30 30 30 30 30 30 32 35 38 34 20 30 30 30 30 30 20 6e
+## [17227] 20 0a 30 30 30 30 30 30 32 38 33 33 20 30 30 30 30 30 20 6e 20 0a
+## [17249] 30 30 30 30 30 30 33 30 38 32 20 30 30 30 30 30 20 6e 20 0a 30 30
+## [17271] 30 30 30 30 33 36 39 34 20 30 30 30 30 30 20 6e 20 0a 30 30 30 30
+## [17293] 30 30 38 33 36 32 20 30 30 30 30 30 20 6e 20 0a 30 30 30 30 30 30
+## [17315] 33 34 35 33 20 30 30 30 30 30 20 6e 20 0a 30 30 30 30 30 30 33 36
+## [17337] 37 34 20 30 30 30 30 30 20 6e 20 0a 30 30 30 30 30 30 38 33 38 33
+## [17359] 20 30 30 30 30 30 20 6e 20 0a 30 30 30 30 30 30 38 36 32 33 20 30
+## [17381] 30 30 30 30 20 6e 20 0a 30 30 30 30 30 31 35 34 38 30 20 30 30 30
+## [17403] 30 30 20 6e 20 0a 30 30 30 30 30 31 35 39 30 33 20 30 30 30 30 30
+## [17425] 20 6e 20 0a 30 30 30 30 30 31 35 34 35 39 20 30 30 30 30 30 20 6e
+## [17447] 20 0a 74 72 61 69 6c 65 72 0a 3c 3c 0a 2f 53 69 7a 65 20 32 36 0a
+## [17469] 2f 49 6e 66 6f 20 31 20 30 20 52 0a 2f 52 6f 6f 74 20 32 20 30 20
+## [17491] 52 0a 3e 3e 0a 73 74 61 72 74 78 72 65 66 0a 31 36 39 31 38 0a 25
+## [17513] 25 45 4f 46 0a
+## 
+## $extension
+## [1] ".pdf"
+## 
+## $url
+## NULL
+## 
+## attr(,"class")
+## [1] "html_screenshot"
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}{Outline of the workflow}
+\protect\hypertarget{outline-of-the-workflow}{}
+
+\begin{itemize}
+\item
+  data-driven identification of all significant cooccurrences
+\item
+  term extraction / calculating keywords as illustration / first
+  analytical take on the data: conveys logic of using difference tests
+  to bring out noteworthy features from a unit of analysis
+  (subcorpus/word context)
+\item
+  To gain a first insight into the thematic foci and linguistic features
+  of AfD speakers, we use the technique of term extraction (Baker 2006):
+  get terms that occur more often in a corpus of interest (coi) compared
+  to a reference corpus (ref) than would be expected by chance. The
+  statistical test used is a chi-squared test (Rose et al. 1998).
+\item
+  equivalent logic of diffence test to get cooccurrences (log likelihood
+  statistic) - but need to filter and to work with key cooccurrences
+  (statistical significant cooccurrences)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Statistically significant words}
+\protect\hypertarget{statistically-significant-words}{}
+
+\begin{itemize}
+\tightlist
+\item
+  The point of departure is a contingency table
+\end{itemize}
+
+\begin{longtable}[]{@{}lccc@{}}
+\toprule
+& coi & ref & TOTAL\tabularnewline
+\midrule
+\endhead
+count token & \(o_{11}\) & \(o_{12}\) & \(r_{1}\)\tabularnewline
+other tokens & \(o_{21}\) & \(o_{22}\) & \(r_{2}\)\tabularnewline
+TOTAL & \(c_{1}\) & \(c_{2}\) & N\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  The chi-squared statistic is calculated as follows (for a single word)
+\end{itemize}
+
+\[ X^{2} = \sum{\frac{(O_{ij} - E_{ij})^2}{O_{ij}}}\]
+
+\end{frame}
+
+\begin{frame}{Term extraction I}
+\protect\hypertarget{term-extraction-i}{}
+
+\includegraphics{index_files/figure-beamer/features_word_pos-1.pdf}
+
+\end{frame}
+
+\begin{frame}{Term extraction II (ADJA - NN)}
+\protect\hypertarget{term-extraction-ii-adja---nn}{}
+
+\includegraphics{index_files/figure-beamer/ngrams_ART_NN-1.pdf}
+
+\end{frame}
+
+\begin{frame}{Term extraction III (NN-ART-NN)}
+\protect\hypertarget{term-extraction-iii-nn-art-nn}{}
+
+\includegraphics{index_files/figure-beamer/ngrams_nn_art_nn-1.pdf}
+
+\end{frame}
+
+\begin{frame}{Intermediate findings}
+\protect\hypertarget{intermediate-findings}{}
+
+\begin{itemize}
+\tightlist
+\item
+  assumed features of populism remain present when AfD arrived in
+  parliament:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    vocabulary that indicates the critique of established parties and
+    elites.
+  \item
+    foreigners and asylum-seekers are an object of concern (using
+    pejorative language)
+  \end{itemize}
+\item
+  will results be different once we use the full FedParl corpus?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{cooccurrences and cooccurrence graphs}
+\protect\hypertarget{cooccurrences-and-cooccurrence-graphs}{}
+
+\begin{itemize}
+\tightlist
+\item
+  the statistical/mathematical logic of calculating cooccurrences is
+  identical with the one explained for term extraction, but the log
+  likelihood test is used:
+\end{itemize}
+
+\[ G^{2} = 2 \sum{O_{ij} log(\frac{O_{ij}}{E_{ij}})} \]
+
+\begin{itemize}
+\item
+  calculation of all statistically significant cooccurrences in a corpus
+  (effects of corpus size!) - available in polmineR starting with
+  v0.7.9.11
+\item
+  Cooccurrence graphs are a popular eye-catcher (Scharloth, Eugster, and
+  Bubenhofer 2013; Lemke and Wiedemann 2016).
+\item
+  The visualisations are very suggestive and seem to be a great
+  condensation of ideas we have about discourse. But are these
+  interpretations sound and do they meet standards of intersubjectivity?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Filtering and annotating cooccurrences}
+\protect\hypertarget{filtering-and-annotating-cooccurrences}{}
+
+\begin{itemize}
+\item
+  objective: get the significant cooccurrences of the AfD in
+  parliamentary discourse: We are not just interested in all
+  statistically significant cooccurrences, but more specifically in
+  those that distinguish AfD speech-making from speeches made by
+  parliamentarians of other factions.
+\item
+  second difference test (chi-squared statistic) with cooccurrences in
+  speeches by all other parliamentarians. See the
+  \href{https://github.com/PolMine/gcdh_slides}{code for these slides}
+  to learn how this is implemented in polmineR.
+\item
+  Cp. \href{https://CRAN.R-project.org/package=CorporaCoCo}{CorporaCoCo
+  R package} (Hennessey et al. 2017), see also
+  \href{https://www.birmingham.ac.uk/Documents/college-artslaw/corpus/conference-archives/2017/general/paper362.pdf}{this
+  research note on co-occurrence comparison techniques}.
+\item
+  Towards intersubjectivity: three-dimensional, interactive graph
+  visualisations that can be annotated (called gradgets, for graph
+  annotation widgets).
+\end{itemize}
+
+\end{frame}
+
+\hypertarget{mapping-afd}{%
+\section{Mapping AfD}\label{mapping-afd}}
+
+\begin{frame}{AfD Cooccurrences (unfiltered)}
+\protect\hypertarget{afd-cooccurrences-unfiltered}{}
+
+\includegraphics{index_files/figure-beamer/cooc_all-1.pdf}
+
+\end{frame}
+
+\begin{frame}{Graph visualisation (2D, N = 100)}
+\protect\hypertarget{graph-visualisation-2d-n-100}{}
+
+\includegraphics{index_files/figure-beamer/unnamed-chunk-2-1.pdf}
+
+\end{frame}
+
+\begin{frame}{Graph-Visualisierung (2D, N = 250)}
+\protect\hypertarget{graph-visualisierung-2d-n-250}{}
+
+\includegraphics{index_files/figure-beamer/unnamed-chunk-3-1.pdf}
+
+\end{frame}
+
+\begin{frame}{Graph-Visualisierung (2D, N = 400)}
+\protect\hypertarget{graph-visualisierung-2d-n-400}{}
+
+\includegraphics{index_files/figure-beamer/unnamed-chunk-4-1.pdf}
+
+\end{frame}
+
+\begin{frame}{Where we stand}
+\protect\hypertarget{where-we-stand}{}
+
+\begin{itemize}
+\item
+  The graph layout depends heavily on filter decisions.
+\item
+  Filtering is necessary, but there are difficulties to justify filter
+  decisions.
+\item
+  Graph visualisation implies many possibilities to provide extra
+  information, but there are perils of information overload.
+\item
+  If we try to omit filter decisions, we run into the problem of
+  overwhelming complexity of large graphs.
+\item
+  How to handle the complexity and create the foundations for
+  intersubjectivity?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Graph visualisation (3D)}
+\protect\hypertarget{graph-visualisation-3d}{}
+
+\begin{itemize}
+\item
+  `gradgets' as a tool to map ideology in an empirical, data-driven,
+  interactive procedure
+\item
+  Using three-dimensional visualisations:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    you can turn the visualisation in three-dimensional space
+  \item
+    you can click on the edges and nodes, get the concordances that are
+    behind the statistical evaluation, and leave an annotation.
+  \end{itemize}
+\item
+  In a real-world workflow, the result of the graph annotation exercise
+  can be stored and put into an online appendix to a publication that
+  explains interpretative results.
+\item
+  Three gradgets:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{widget_3.html}{threedimensional, anaglyph gradget, restrictive
+    filtering}
+  \item
+    \href{widget_2.html}{threedimensional, anaglyph gradget}
+  \item
+    \href{widget_1.html}{threedimensional, plain gradget, annotation}
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\hypertarget{conclusions}{%
+\section{Conclusions}\label{conclusions}}
+
+\begin{frame}{Intermediate conclusions}
+\protect\hypertarget{intermediate-conclusions}{}
+
+The results of this research are very preliminary:
+
+\begin{itemize}
+\item
+  (somewhat surprising) explicit politeness of AfD speakers.
+\item
+  It's the economy: Introducing a redistributive logic as a leitmotiv.
+\item
+  There is no autism at all! But a lot of interaction with other parties
+  (and visitors!).
+\item
+  Cultivating antagonisms: ``Wir'' (AfD / AfD-Fraktion) and the others.
+\item
+  It's the economy: Introducing a redistributive logic as a leitmotiv.
+\end{itemize}
+
+But in a way, AfD speeches served only as a case how we might develop
+the idea of ``visual hermeneutics'' (Schaal, Kath, and Dumm 2016): If we
+decide to work with cooccurrence graphs, graph annotation is the
+approach suggested here to realise the idea of distant and close
+reading, and to achieve intersubjectivity.
+
+\end{frame}
+
+\begin{frame}{Potential output}
+\protect\hypertarget{potential-output}{}
+
+!(Thomas Homer-Dixon 2013)(img/cognitivemap.png)
+
+\end{frame}
+
+\begin{frame}{Next steps}
+\protect\hypertarget{next-steps}{}
+
+\begin{itemize}
+\item
+  rethink and adjust filter decision (key occurrences may throw out
+  ideologically significant vocabulary)
+\item
+  finally use FedParl corpus!
+
+  \begin{itemize}
+  \tightlist
+  \item
+    compare regional states
+  \item
+    compare ``Flügel'' MPs and other MPs
+  \end{itemize}
+\item
+  really do the annotation - and invent a way how to publish
+  three-dimensional visualisations
+\end{itemize}
+
+\end{frame}
+
+\hypertarget{feedback-welcome}{%
+\section{Feedback welcome!}\label{feedback-welcome}}
+
+\begin{frame}{References}
+\protect\hypertarget{references}{}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-Baker2006}{}%
+Baker, Paul. 2006. \emph{Using Corpora in Discourse Analysis}. Londing:
+continuum.
+
+\leavevmode\hypertarget{ref-Bell1960}{}%
+Bell, Daniel. 1960. New York: Collier.
+
+\leavevmode\hypertarget{ref-Freeden1998}{}%
+Freeden, Michael. 1998. ``Is Nationalism a Distinct Ideology?''
+\emph{Political Studies} XLVI: 748--65.
+
+\leavevmode\hypertarget{ref-CorporaCoCo2017}{}%
+Hennessey, Anthony, Viola Wiegand, Michaela Mahlberg, Christopher R.
+Tench, and Jamie Lentin. 2017. \emph{CorporaCoCo: Corpora Co-Occurrence
+Comparison}. \url{https://CRAN.R-project.org/package=CorporaCoCo}.
+
+\leavevmode\hypertarget{ref-Kirchheimer1965}{}%
+Kirchheimer, Otto. n.d. ``Der Wandel Des Westdeutschen Parteisystems.''
+\emph{Politische Vierteljahresschrift} 6: 20--41.
+
+\leavevmode\hypertarget{ref-2016TMid}{}%
+Lemke, Matthias, and Gregor Wiedemann. 2016. \emph{Text Mining in Den
+Sozialwissenschaften: Grundlagen Und Anwendungen Zwischen Qualitativer
+Und Quantitativer Diskursanalyse}. Wiesbaden: Springer.
+
+\leavevmode\hypertarget{ref-Moretti2013}{}%
+Moretti, Franco. 2013. \emph{Distant Reading}. London: Verso.
+
+\leavevmode\hypertarget{ref-Mudde2004}{}%
+Mudde, Cas. 2004. ``The Populist Zeitgeist,'' 541--63.
+
+\leavevmode\hypertarget{ref-Rose98measuresfor}{}%
+Rose, Tony, Adam Kilgarriff, Adam Kilgarriff, and Tony Rose. 1998.
+``Measures for Corpus Similarity and Homogeneity.'' In \emph{Proceedings
+of the 3rd Conference on Empirical Methods in Natural Language
+Processing}, 46--52. ACL-SIGDAT.
+
+\leavevmode\hypertarget{ref-Schaal2016}{}%
+Schaal, G.S., R. Kath, and S. Dumm. 2016. ``New Visual Hermeneutics.''
+\emph{Cybernetics \& Human Knowing} 23 (2): 51--75.
+
+\leavevmode\hypertarget{ref-Rhizome2013}{}%
+Scharloth, Joachim, David Eugster, and Noah Bubenhofer. 2013. ``Das
+Wuchern Der Rhizome. Linguistische Diskursanalyse Und Data-Driven
+Turn.'' In \emph{Linguistische Diskursanalyse. Neue Perspektiven},
+edited by Dietrich Busse and Wolfgang Teubert, 345--80. Wiesbaden: VS
+Verlag.
+
+\leavevmode\hypertarget{ref-HomerDixon2013}{}%
+Thomas Homer-Dixon, Matto Mildenberger, Jonathan Leader Maynard. 2013.
+``A Complex Systems Approach to the Study of Ideology:
+Cognitive-Affective Structures and the Dynamics of Belief Systems.''
+\emph{Journal of Social and Political Psychology} 1: 337--63.
+
+\leavevmode\hypertarget{ref-HomerDixon2014}{}%
+Thomas Homer-Dixon, Steven J. Mock, Manjana Milkoreit, and Paul Thagard.
+2014. ``The Conceptual Structure of Social Disputes: Cognitive-Affective
+Maps as a Tool for Conflict Analysis and Resolution.'' \emph{SAGE Open},
+1--20.
+
+\end{frame}
+
+\end{document}
